@@ -1,0 +1,47 @@
+{
+  "name": "seafarer-education",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "anathema": "anathema --config anathema.js",
+    "docs": "sphinx-build -M html ./docs ./build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weareoffsider/seafarer-education.git"
+  },
+  "author": "Offsider",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weareoffsider/seafarer-education/issues"
+  },
+  "homepage": "https://github.com/weareoffsider/seafarer-education#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "anathema": "^0.2.1",
+    "del": "^5.1.0",
+    "git-rev": "^0.2.1",
+    "http-server": "^0.12.3",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.2",
+    "prettier": "^2.0.5",
+    "ts-loader": "^7.0.3",
+    "typescript": "^3.8.3",
+    "webpack": "^4.43.0",
+    "webpack-bundle-analyzer": "^3.7.0",
+    "webpack-node-externals": "^1.7.2",
+    "webpack-plugin-replace": "^1.2.0"
+  }
+}

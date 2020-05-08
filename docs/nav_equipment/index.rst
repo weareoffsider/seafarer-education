@@ -1,0 +1,5 @@
+Navigational Equipment
+======================
+
+.. toctree::
+   sextant

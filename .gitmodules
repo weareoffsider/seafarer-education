@@ -1,0 +1,3 @@
+[submodule "lib/spanner/content_cms/jc"]
+	path = lib/spanner_marketing/content_cms/jc
+	url = git@bitbucket.org:offsider/jc.git
