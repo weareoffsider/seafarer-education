@@ -1,0 +1,5 @@
+Navigation
+======================
+
+.. toctree::
+   sailings

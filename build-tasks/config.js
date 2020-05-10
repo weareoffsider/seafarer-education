@@ -7,7 +7,7 @@ anathema.config = {
   paths: {
     docSrc: "docs",
     src: "lib",
-    staticOut: "build/assets",
+    staticOut: "build/html/assets",
     buildRoot: "build",
     buildHtmlRoot: "build/html",
   },

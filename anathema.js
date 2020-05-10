@@ -5,6 +5,8 @@ const { exec } = require("child_process")
 var gitRev = require("git-rev")
 var del = require("del")
 
+const scripts = require("./build-tasks/scripts.js")
+
 anathema.task("clean", function (task) {
   const { buildRoot } = anathema.config.paths
   return del([anathema.rootDirectory + "/" + buildRoot + "/**/*"]).then(
@@ -49,7 +51,9 @@ anathema.task("server", function (task) {
 
 anathema.dashboard("default", function (dashboard) {
   dashboard.task(["clean"])
+  dashboard.task(["scripts"])
   dashboard.watch(["docs"])
+  dashboard.monitor(["webpack"])
   dashboard.task(["server"])
 })
 

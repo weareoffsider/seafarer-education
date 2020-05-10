@@ -10,6 +10,7 @@ Seafarer
    :maxdepth: 2
 
    nav_equipment/index
+   navigation/index
    meteorology/index
 
 
