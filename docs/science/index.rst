@@ -6,6 +6,7 @@ Many pieces of equipment and navigational techniques depend on fields of study i
 .. toctree::
    :maxdepth: 2
 
-   science/energy_waves
-   science/mechanical_waves
-   science/electromagnetic_waves
+   coriolis_effect
+   waves
+   mechanical_waves
+   electromagnetic_waves
