@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>RADAR &#8212; Seafarer 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="/assets/SeafarerClient.pkg.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Science" href="../../science/index.html" />
+    <link rel="prev" title="Electronic Navigation" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="radar">
+<h1>RADAR<a class="headerlink" href="#radar" title="Permalink to this headline">¶</a></h1>
+<p>RADAR stands for Radio Detection And Ranging. You probably have an idea of what it does but lets go in to the fundamentals of how it works.</p>
+<div class="section" id="fundamental-concepts">
+<h2>Fundamental Concepts<a class="headerlink" href="#fundamental-concepts" title="Permalink to this headline">¶</a></h2>
+<p>RADARs transmit radio waves out in to the world. When those radio waves make contact with a target, they will reflect. Provided the surface does not absorb too much energy, and some of the waves reflect directly back towards the transmitter, a receiver in the RADAR can measure the strength of the radio waves that return. This all happens extremely quickly because radio waves travel at the speed of light, which is 300,000,000 metres per second. That’s a big number, so for practicality it makes sense to work in microseconds instead, in which case it’s 300 metres per microsecond.</p>
+<div class="section" id="range">
+<h3>Range<a class="headerlink" href="#range" title="Permalink to this headline">¶</a></h3>
+<p>It’s important to know that speed, because it’s pivotal to how RADARs work out the range of an ‘echo’. With a sufficiently accurate time measurement function and a receiver, you can measure how many microseconds it took for an echo to return to the RADAR, and in doing so calculate the range of that echo (pg. 2) <a class="reference internal" href="#dnbw05" id="id1"><span>[DNBW05]</span></a>.</p>
+<div class="math notranslate nohighlight">
+\[Range_{metres} = Time_{microseconds} \div 300 \div 2\]</div>
+<p>We divide the time by the speed of light, and then divide by 2 because the radio wave had to travel to the target and back.</p>
+</div>
+<div class="section" id="bearings">
+<h3>Bearings<a class="headerlink" href="#bearings" title="Permalink to this headline">¶</a></h3>
+<p>The bearing of an echo is found based on the direction the scanner was pointing at the time of transmission. This will be taken relative to the ship, with no sense of compass direction. If the ship links an accurate source of direction to the RADAR system, typically a Gyroscopic Compass, then the bearings will be able to be provided as relative to the ship or as a True bearing (provided the Compass has no error).</p>
+<p>Care should be taken with bearings however as they are never as accurate as range due to the fact that radio waves while concentrated in RADAR setup, are not accurate down to a degree. The width of the RADAR beam transmitted matters because everything within that beam will be received. This angle is called Horizontal Beamwidth and for RADARs complying with IMO Performance Standards <a class="reference internal" href="#imonav" id="id2"><span>[IMONav]</span></a> it must be below 2.5°.</p>
+<dl class="citation">
+<dt class="label" id="dnbw05"><span class="brackets"><a class="fn-backref" href="#id1">DNBW05</a></span></dt>
+<dd><ol class="upperalpha simple" start="23">
+<li><p>Dinely, A. Norris, A. Bole, and A. Wall. 2005. Radar and ARPA Manual: Radar and Target Tracking for Professional Mariners, Yachtsmen and Users of Marine Radar. Elsevier Science &amp; Technology.</p></li>
+</ol>
+</dd>
+<dt class="label" id="imonav"><span class="brackets"><a class="fn-backref" href="#id2">IMONav</a></span></dt>
+<dd><p>Annex 9 - IMO Performance Standards for Navigational Equipment - <a class="reference external" href="http://solasv.mcga.gov.uk/annexes/Annex09.htm">http://solasv.mcga.gov.uk/annexes/Annex09.htm</a></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Seafarer</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Navigation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Electronic Navigation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../science/index.html">Science</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Navigation</a><ul>
+  <li><a href="index.html">Electronic Navigation</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Electronic Navigation</a></li>
+      <li>Next: <a href="../../science/index.html" title="next chapter">Science</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Weekends.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/navigation/electronic_nav/radar.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
