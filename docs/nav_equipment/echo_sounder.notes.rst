@@ -98,6 +98,7 @@ Types
 -------------
 
 Magnetostrictive - robust and protected by a solid transmitting face. Ideal for deep sea sounders.
+Annealed Nickel wrapped in copper - current causes expansion and contraction creating vibration.
 
 Electrostrictive - less robust, higher frequency and resolution. Super yachts or other vessels interested in bottom resolution.
 

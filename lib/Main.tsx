@@ -1,11 +1,13 @@
 import * as d3 from "d3"
 
+import PlaneSailingAtoB from "./sailings/PlaneSailingAtoB"
+
 document.addEventListener("DOMContentLoaded", function (event) {
   const planeSailing = document.querySelectorAll(".plane-sailing-diagram")
-  Array.from(planeSailing).forEach(doPlaneSailing)
+  Array.from(planeSailing).forEach(PlaneSailingAtoB)
 })
 
-function doPlaneSailing(element: SVGElement) {
+function doPlaneSailing(element: HTMLElement) {
   const data = {
     a: { lat: 10, lon: 10 },
     b: { lat: 20, lon: 20 },

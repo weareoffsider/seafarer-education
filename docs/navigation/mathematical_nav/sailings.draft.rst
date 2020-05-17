@@ -89,8 +89,7 @@ Plane Sailing uses the same concept as Parallel Sailing, using the Cosine of Lat
 
 .. raw:: html
 
-    <div style="padding-bottom: 50%; position: relative;">
-        <svg id="pl1" class="plane-sailing-diagram" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></svg>
+    <div class="plane-sailing-diagram">
     </div>
 
 Finding Course and Distance

@@ -19,7 +19,6 @@ Spinning wheels create a resistive force, that is, they resist changes in orient
 1. Balance the Gyro so it parallel to the horizon, done through gyro rotor case design.
 2. Settle tilt and drift by correcting for Latitude, tilt max at equator, drift max at poles.
 
-
 Resistance Means:
 
 Mercury Ballistic provides the torque which keeps it facing North. (viscous liquid staying east west). Gravity can also be used using weights. Torque induced east west movement (rotation of the Earth).
