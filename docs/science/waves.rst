@@ -25,6 +25,30 @@ The **wavelength** is the distance between two crests or troughs, travelling at 
 
 If the **frequency** and **velocity** is known you can calculate the wave length.
 
+.. math::
+    velocity = frequency * wavelength \\
+    wavelength = velocity \div frequency \\
+    frequency = velocity \div wavelength
+
+
+When waves hit objects
+-----------------------
+
+Waves behave in a variety of ways when they hit some new object, be it the land, a body of water, the atmosphere, another ship. While the specifics of what waves have what kind of prominent behaviours is not the focus in this section, it's good to know the terminology, as they do have practical consequences for the technology and techniques we mariners use.
+
+Reflection
+^^^^^^^^^^^^^
+
+The wave bounces off an object and continues to travel in the same form it was before. Any mirror demonstrates this with light, but it's also what is happening when an echo occurs, sound is reflected back towards you.
+
+Absorption
+^^^^^^^^^^^^^
+
+An object can absorb the energy from the wave. In the case of absorbing light, this means the object will become hotter as a consequence, but it also means that light will no longer reflect.
+
+
+
+
 Doppler Effect
 ----------------
 
