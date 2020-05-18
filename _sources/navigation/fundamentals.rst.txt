@@ -17,6 +17,7 @@ When we consider our position on the Earth, we use lines of latitude (parallels)
 
 Because lines of longitude meets at the poles, they get closer and closer the further north or south you travel. Lines of Latitude, on the other hand, are evenly spaced all the way up to the poles.
 
+
 Degrees, Minutes, and Sign
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 We measure latitude and longitude in degrees. A full circle has 360 degrees, and in each degree is 60 minutes. In each minute there are 60 seconds as well, however they are not used in Latitude and Longitude measurements, they will always be expressed as degrees and minutes, for example: :math:`45° 15.34'`.
