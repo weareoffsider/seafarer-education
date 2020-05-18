@@ -384,7 +384,6 @@ Search.setIndex({
     norri: 2,
     north: 4,
     northern: 4,
-    note: [],
     notetak: 0,
     number: [2, 8],
     object: [4, 6],
