@@ -28,6 +28,8 @@ Care should be taken with bearings however as they are never as accurate as rang
 
 
 
+
+
 .. [DNBW05]
     W. Dinely, A. Norris, A. Bole, and A. Wall. 2005. Radar and ARPA Manual: Radar and Target Tracking for Professional Mariners, Yachtsmen and Users of Marine Radar. Elsevier Science & Technology.
 
