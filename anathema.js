@@ -32,14 +32,23 @@ anathema.task("docs", function (task) {
         resolve(true)
       }
     )
-  }).then(() => {
-    return task
-      .srcFromString({
-        name: "CNAME",
-        data: "seafarer.education",
-      })
-      .output("build/html")
   })
+    .then(() => {
+      return task
+        .srcFromString({
+          name: "CNAME",
+          data: "seafarer.education",
+        })
+        .output("build/html")
+    })
+    .then(() => {
+      return task
+        .srcFromString({
+          name: ".nojekyll",
+          data: "",
+        })
+        .output("build/html")
+    })
 })
 anathema.watcher("docs", "docs/**/*", ["docs"], {
   runOnStart: true,
