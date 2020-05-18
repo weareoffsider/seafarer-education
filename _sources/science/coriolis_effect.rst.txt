@@ -1,7 +1,7 @@
 Coriolis Effect
 ======================
 
-This effect is a key influence on the practice of Meteorology and Oceanography, and can be a little difficult to understand. The Coriolis Effect is not precisely a force like Gravity, Pressure, or Friction, but is rather a relationship. Everything that exists on the Earth exists on an object that is rotating, roughly 15° an hour. While a particle or object sits still on the Earth, this rotation can be largely ignored, so we can just think about other forces.
+This effect is a key influence on the practice of Meteorology and Oceanography, and can be a little difficult to understand. The Coriolis Effect is not precisely a force like Gravity, Pressure, or Friction, but is rather a relationship. Everything that exists on the Earth exists on an object that is rotating, 15° an hour. While a particle or object sits still on the Earth, this rotation can be largely ignored, so we can just think about other forces.
 
 However, when a particle or objects starts to pick up speed, an extra effect starts to be exerted on the object due to it's existence on a rotating object. This effect is called the Coriolis Effect. The complete explanation of this can take a while, but here are the facts regarding the Coriolis Effect, as stated by Knauss & Garfield (2016) [KG06]_:
 
