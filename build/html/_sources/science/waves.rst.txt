@@ -44,9 +44,21 @@ The wave bounces off an object and continues to travel in the same form it was b
 Absorption
 ^^^^^^^^^^^^^
 
-An object can absorb the energy from the wave. In the case of absorbing light, this means the object will become hotter as a consequence, but it also means that light will no longer reflect.
+An object can absorb the energy from the wave. In the case of absorbing light, this means the object will become hotter as a consequence, but it also means that light will no longer reflect. When waves are absorbed, they are often later radiated in a different form. Light waves will radiate as infrared energy when they are released by the land.
 
+Diffraction
+^^^^^^^^^^^^^
 
+Diffraction is the bending and spreading of waves around an obstacle. In the case of visible light, the separation of wavelengths through diffraction results in a rainbow.
+
+Scatter
+^^^^^^^^^
+Scattering occurs when light bounces of the object in a variety of directions. This effect is why the sky appears blue: short wavelength light (blue and violet) is scattered as it passes through the atmosphere and illuminates the sky with those particular wavelengths, while the rest of the light passes through.
+
+Refraction
+^^^^^^^^^^^^
+
+Refraction is light waves changing direction as they pass from one medium to another, the change in speed means they bend in direction as well. This effect has a range of consequences throughout Maritime subjects, impacting on the accuracy of Celestial Navigation, and the horizon of RADARs and radio communication.
 
 
 Doppler Effect

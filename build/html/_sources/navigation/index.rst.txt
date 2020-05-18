@@ -14,5 +14,6 @@ Finally, Electronic Navigation is where the 21st century has automated or assist
 .. toctree::
    :maxdepth: 2
 
+   fundamentals
    mathematical_nav/index
    electronic_nav/index
