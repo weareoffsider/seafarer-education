@@ -15,5 +15,6 @@ Finally, Electronic Navigation is where the 21st century has automated or assist
    :maxdepth: 2
 
    fundamentals
+   mechanical_nav/index
    mathematical_nav/index
    electronic_nav/index

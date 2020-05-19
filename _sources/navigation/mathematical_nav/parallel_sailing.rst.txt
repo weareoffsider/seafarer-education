@@ -1,4 +1,7 @@
 Parallel Sailing
 ====================
 
-Coming soon...
+.. raw:: html
+
+    <div class="ParallelSailing">
+    </div>
