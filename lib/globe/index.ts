@@ -5,7 +5,7 @@ import * as topojson from "topojson"
 import range from "lodash/range"
 
 export interface GlobeLine {
-  type: "track" | "calculation" | "prediction"
+  type: "track" | "calculation" | "prediction" | "meridian" | "parallel"
   start_lat: number
   start_lon: number
   end_lat: number
@@ -14,7 +14,7 @@ export interface GlobeLine {
 
 export interface GlobeArgs {
   lines?: GlobeLine[]
-  showGlobe?: boolean
+  showLand?: boolean
 }
 
 export interface GlobeState {
@@ -57,12 +57,13 @@ export default function (div: HTMLDivElement, args: GlobeArgs) {
     const offsetX = (e.pageX - div.offsetLeft) / div.offsetWidth
     const offsetY = (e.pageY - div.offsetTop) / div.offsetHeight
 
-    state.x = state.x + (offsetX - state.rotationOffsetX) * 50
-    state.y = state.y - (offsetY - state.rotationOffsetY) * 50
+    state.x = state.x + (offsetX - state.rotationOffsetX) * 80
+    state.y = state.y - (offsetY - state.rotationOffsetY) * 80
 
     state.rotationOffsetX = offsetX
     state.rotationOffsetY = offsetY
 
+    console.log(state.x, state.y)
     rotate(div, svg, state)
   })
 
@@ -91,7 +92,24 @@ export default function (div: HTMLDivElement, args: GlobeArgs) {
     currentArgs = updatedArgs
 
     svg.selectAll("*").remove()
-    console.log(currentArgs)
+
+    let latTotal = 0
+    let lonTotal = 0
+
+    currentArgs.lines.forEach((line) => {
+      latTotal += line.start_lat + line.end_lat
+      lonTotal += line.start_lon + line.end_lon
+    })
+
+    console.log(lonTotal, latTotal)
+
+    const mlon = lonTotal / (currentArgs.lines.length * 2)
+    const mlat = latTotal / (currentArgs.lines.length * 2)
+
+    state.x = 180 - mlon
+    state.y = 180 + mlat
+    state.scale = 400
+    console.log("CENTERING ON", mlon, mlat)
 
     render(div, svg, currentArgs, state)
   }
@@ -130,7 +148,62 @@ function render(
 
   svg.append("path").datum(graticule).attr("class", "graticule").attr("d", path)
 
-  if (args.showGlobe) {
+  const primeMed = {
+    type: "Feature",
+    geometry: {
+      type: "LineString",
+      coordinates: interpolateLine({
+        type: "meridian",
+        start_lat: 85,
+        start_lon: 0,
+        end_lat: -85,
+        end_lon: 0,
+      }),
+    },
+  }
+
+  const antiMed = {
+    type: "Feature",
+    geometry: {
+      type: "LineString",
+      coordinates: interpolateLine({
+        type: "meridian",
+        start_lat: 85,
+        start_lon: 180,
+        end_lat: -85,
+        end_lon: 180,
+      }),
+    },
+  }
+
+  const equatorEast = {
+    type: "Feature",
+    geometry: {
+      type: "LineString",
+      coordinates: interpolateLine({
+        type: "parallel",
+        start_lat: 0,
+        start_lon: 0,
+        end_lat: 0,
+        end_lon: 170,
+      }),
+    },
+  }
+  const equatorWest = {
+    type: "Feature",
+    geometry: {
+      type: "LineString",
+      coordinates: interpolateLine({
+        type: "parallel",
+        start_lat: 0,
+        start_lon: 0,
+        end_lat: 0,
+        end_lon: -170,
+      }),
+    },
+  }
+
+  if (args.showLand) {
     const world: any = worldTopo
     svg
       .insert("path", ".graticule")
@@ -148,6 +221,30 @@ function render(
       .attr("class", "boundary")
       .attr("d", path)
   }
+
+  svg
+    .insert("path", `.prime-meridian`)
+    .datum(primeMed)
+    .attr("class", "prime-meridian")
+    .attr("d", path)
+
+  svg
+    .insert("path", `.anti-meridian`)
+    .datum(antiMed)
+    .attr("class", "anti-meridian")
+    .attr("d", path)
+
+  svg
+    .insert("path", `.equator`)
+    .datum(equatorEast)
+    .attr("class", "equator")
+    .attr("d", path)
+
+  svg
+    .insert("path", `.equator`)
+    .datum(equatorWest)
+    .attr("class", "equator")
+    .attr("d", path)
 
   if (args.lines) {
     args.lines.forEach((line) => {

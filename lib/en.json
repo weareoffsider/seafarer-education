@@ -10,6 +10,7 @@
     "destination_latitude": "Destination Latitude",
     "destination_longitude": "Destination Longitude"
   },
+  "show_proforma": "Show Proforma",
   "show_answer": "Show Answer",
   "generate_new_question": "Generate New Question",
   "end": "END"
