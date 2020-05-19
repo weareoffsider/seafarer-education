@@ -4,6 +4,12 @@
     "origin_longitude": "Origin Longitude",
     "destination_longitude": "Destination Longitude"
   },
+  "plane_sailing_ab": {
+    "origin_latitude": "Origin Latitude",
+    "origin_longitude": "Origin Longitude",
+    "destination_latitude": "Destination Latitude",
+    "destination_longitude": "Destination Longitude"
+  },
   "show_answer": "Show Answer",
   "generate_new_question": "Generate New Question",
   "end": "END"

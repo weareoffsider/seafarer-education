@@ -50,6 +50,36 @@ SENCs are the Electronic Chart after it has been loaded in to the ECDIS.
 
 Chart Layers
 ----------------------------
+
+Base Display
+^^^^^^^^^^^^^^
+Must always be displayed. Can't be used for navigation alone.
+
+Coastline
+Safety Contour
+Isolated Underwater dangers less than the safety contour
+Isolated dangers within safe water
+north arrow
+units of depth and height
+display mode
+
+Standard Display
+^^^^^^^^^^^^^^^^^
+most of the detail needed for safe navigation
+
+All Other Information Display
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spot soundings
+submarine cables and pipelines
+details of all isolated dangers
+aids to navigation
+contents of cautionary notes
+chart update
+graticule
+place names
+ENC edition date
+
+
 An electronic navigation chart is constructed of layers. There is standardisation of symbols used at this point: https://www.admiralty.co.uk/news/blogs/the-quick-guide-to-enc-symbols - which can be used for basic interpretation of charts.
 
 
