@@ -26,6 +26,7 @@ export class ParallelSailingState {
   @observable point_a_lon: Longitude
   @observable point_b_lon: Longitude
   @observable showAnswer: boolean
+  @observable showProforma: boolean
 
   constructor() {
     this.latitude = new Latitude(18, 37, "N")
@@ -37,6 +38,15 @@ export class ParallelSailingState {
   toggleShowAnswer(e: Event) {
     e.preventDefault()
     this.showAnswer = !this.showAnswer
+    if (this.showAnswer) {
+      this.showProforma = true
+    }
+  }
+
+  @action.bound
+  toggleProforma(e: Event) {
+    e.preventDefault()
+    this.showProforma = !this.showProforma
   }
 
   @action.bound
@@ -61,20 +71,9 @@ export default function (root: HTMLDivElement) {
   root.appendChild(globeContainer)
   root.appendChild(proforma)
 
-  const globeUpdate = Globe(globeContainer, {
-    lines: [
-      {
-        type: "prediction",
-        start_lat: 20,
-        start_lon: 160,
-        end_lat: 20,
-        end_lon: 130,
-      },
-    ],
-  })
+  const globeUpdate = Globe(globeContainer, {})
 
   autorun(() => {
-    console.log("Runner")
     renderWithContext(proforma, <ParallelSailingProforma state={state} />)
 
     globeUpdate({
@@ -97,25 +96,25 @@ export function ParallelSailingProforma(props: {
   const { state } = props
   const { localize: l10n } = useContext(RenderContext)
 
-  let answerRender = null
+  let proformaRender = null
 
-  if (state.showAnswer) {
+  if (state.showProforma) {
     const dlon = state.point_a_lon.getDlon(state.point_b_lon)
     const departure = dlon.asMinutes() * cos(state.latitude.asFloat())
     const course = dlon.sign == "E" ? "90° T" : "270° T"
 
-    answerRender = (
+    proformaRender = (
       <tbody>
         <tr>
           <td>{"D'Lon"}</td>
-          <td>{dlon.asString()}</td>
+          {state.showAnswer && <td>{dlon.asString()}</td>}
         </tr>
         <tr>
           <td>
             {"D'Lon"}
             <sub>{"min"}</sub>
           </td>
-          <td>{dlon.asMinutes().toFixed(2) + "'"}</td>
+          {state.showAnswer && <td>{dlon.asMinutes().toFixed(2) + "'"}</td>}
         </tr>
         <tr>
           <td>
@@ -130,11 +129,13 @@ export function ParallelSailingProforma(props: {
         </tr>
         <tr>
           <td>{"Distance"}</td>
-          <td>{departure.toFixed(2) + " nautical miles"}</td>
+          {state.showAnswer && (
+            <td>{departure.toFixed(2) + " nautical miles"}</td>
+          )}
         </tr>
         <tr>
           <td>{"Course"}</td>
-          <td>{course}</td>
+          {state.showAnswer && <td>{course}</td>}
         </tr>
         <tr>
           <td></td>
@@ -172,7 +173,11 @@ export function ParallelSailingProforma(props: {
       </tbody>
       <tbody>
         <tr>
-          <td></td>
+          <td>
+            <button onClick={state.toggleProforma}>
+              {l10n.t("show_proforma")}
+            </button>
+          </td>
           <td>
             <button onClick={state.toggleShowAnswer}>
               {l10n.t("show_answer")}
@@ -180,7 +185,7 @@ export function ParallelSailingProforma(props: {
           </td>
         </tr>
       </tbody>
-      {answerRender}
+      {proformaRender}
     </table>
   )
 }
