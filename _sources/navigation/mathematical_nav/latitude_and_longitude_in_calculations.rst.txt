@@ -90,7 +90,7 @@ Converting Difference in Longitude to minutes works the same way as Latitude, ju
 It's important to note that Longitude in Minutes DOES NOT correlate with nautical miles, as meridians get closer together the closer they are to the poles, see :doc:`../fundamentals` for more on this.
 
 Departure
-^^^^^^^^^^^
+---------------------
 
 **Departure** is the conversion of a Difference in Longitude (in minutes) to nautical miles. In order to do this we need to know the Latitude at which we are calculating the departure, because the meridians get closer together as you get closer to the poles.
 
