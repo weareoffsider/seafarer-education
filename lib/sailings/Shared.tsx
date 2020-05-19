@@ -1,6 +1,9 @@
 import { h, Component, createContext } from "preact"
 import { observable, computed, action } from "mobx"
 import { useObserver } from "mobx-react-lite"
+import Chance from "chance"
+
+const chance = new Chance()
 
 export function cos(degrees: number) {
   return Math.cos((degrees * Math.PI) / 180)
@@ -61,6 +64,10 @@ export function latFromFloat(lat: number) {
   return new Latitude(Math.floor(Math.abs(lat)), mins, sign)
 }
 
+export function generateRandomLat() {
+  return latFromFloat(chance.floating({ min: -60, max: 60 }))
+}
+
 export function lonFromFloat(lon: number) {
   if (lon > 180) {
     lon = 360 - lon
@@ -70,6 +77,10 @@ export function lonFromFloat(lon: number) {
   const sign = lon > 0 ? "E" : "W"
   const mins = (Math.abs(lon) % 1) * 60
   return new Longitude(Math.floor(Math.abs(lon)), mins, sign)
+}
+
+export function generateRandomLon() {
+  return lonFromFloat(chance.floating({ min: -179.99, max: 179.99 }))
 }
 
 export class Latitude {
@@ -140,7 +151,7 @@ export class Longitude {
   }
 
   asString() {
-    return `${this.degrees.toFixed(0)}\u00b0 ${this.minutes.toFixed(2)}1 ${
+    return `${this.degrees.toFixed(0)}\u00b0 ${this.minutes.toFixed(2)}' ${
       this.sign
     }`
   }
@@ -210,7 +221,7 @@ export function LatitudeInput(props: LatitudeInputProps) {
           min="0"
           value={props.lat.minutes}
         />
-        {'" '}
+        {"' "}
         <select
           value={props.lat.sign}
           onChange={(e) =>
@@ -253,7 +264,7 @@ export function LongitudeInput(props: LongitudeInputProps) {
           min="0"
           value={props.lon.minutes}
         />
-        {'" '}
+        {"' "}
         <select
           value={props.lon.sign}
           onChange={(e) =>

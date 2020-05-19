@@ -6,6 +6,7 @@ var gitRev = require("git-rev")
 var del = require("del")
 
 const scripts = require("./build-tasks/scripts.js")
+const styles = require("./build-tasks/styles.js")
 
 anathema.task("clean", function (task) {
   const { buildRoot } = anathema.config.paths
@@ -68,7 +69,7 @@ anathema.task("server", function (task) {
 anathema.dashboard("default", function (dashboard) {
   dashboard.task(["clean"])
   dashboard.task(["scripts"])
-  dashboard.watch(["docs"])
+  dashboard.watch(["docs", "styles"])
   dashboard.monitor(["webpack"])
   dashboard.task(["server"])
 })

@@ -1,4 +1,4 @@
-import { createElement, createContext } from "preact"
+import { h, createElement, createContext, render } from "preact"
 import LocalizeContext from "../platform/Localize"
 
 export interface SeafarerAppContext {
@@ -15,4 +15,18 @@ export function generateFullContext(
     value: context,
     children: children,
   })
+}
+
+import enLocale from "../en.json"
+const localContext = {
+  localize: new LocalizeContext("en", enLocale),
+}
+
+export function renderWithContext<T>(container: HTMLElement, children: any) {
+  return render(
+    <RenderContext.Provider value={localContext}>
+      {children}
+    </RenderContext.Provider>,
+    container
+  )
 }

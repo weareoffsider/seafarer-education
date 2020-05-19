@@ -1,0 +1,68 @@
+.Globe {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  pointer-events: none;
+
+  &__sphere {
+  }
+
+  .zoom-controls {
+    position:  absolute;
+    top:       0.5rem;
+    left:      0.5rem;
+    a {
+      display:        block;
+      margin-bottom:  0.25rem;
+
+    }
+
+  }
+
+  .stroke {
+    fill: none;
+    stroke: #000;
+    stroke-width: 3px;
+  }
+
+  .fill {
+    fill: #fff;
+  }
+
+  .graticule {
+    fill: none;
+    stroke: #777;
+    stroke-width: .5px;
+    stroke-opacity: .5;
+  }
+
+  .land {
+    fill: #222;
+  }
+
+  .boundary {
+    fill: none;
+    stroke: #fff;
+    stroke-width: .5px;
+  }
+
+  .track {
+    fill: none;
+    stroke: red;
+    stroke-width: 1px;
+
+    &.cruise-track-0 { stroke: blue; }
+    &.cruise-track-1 { stroke: green; }
+    &.cruise-track-2 { stroke: orange; }
+    &.cruise-track-3 { stroke: red; }
+    &.cruise-track-4 { stroke: purple; }
+  }
+
+  .bounds {
+    fill: transparentize(lighten(blue, 40), 0.9);
+    stroke: blue;
+    stroke-width: 1px;
+  }
+}
