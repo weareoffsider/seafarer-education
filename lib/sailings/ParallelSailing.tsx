@@ -73,7 +73,10 @@ export default function (root: HTMLDivElement) {
 
   const globeUpdate = Globe(globeContainer, {})
 
-  autorun(() => {
+  autorun(render)
+  window.requestAnimationFrame(render)
+
+  function render() {
     renderWithContext(proforma, <ParallelSailingProforma state={state} />)
 
     globeUpdate({
@@ -86,8 +89,22 @@ export default function (root: HTMLDivElement) {
           end_lon: state.point_b_lon.asFloat(),
         },
       ],
+      points: [
+        {
+          type: "dot",
+          lat: state.latitude.asFloat(),
+          lon: state.point_a_lon.asFloat(),
+          text: "Origin",
+        },
+        {
+          type: "dot",
+          lat: state.latitude.asFloat(),
+          lon: state.point_b_lon.asFloat(),
+          text: "Destination",
+        },
+      ],
     })
-  })
+  }
 }
 
 export function ParallelSailingProforma(props: {

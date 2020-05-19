@@ -101,8 +101,9 @@ D'Lon_{min} &amp;= 10° * 60 \\
 D'Lon_{min} &amp;= 600'\end{split}\]</div>
 <p>It’s important to note that Longitude in Minutes DOES NOT correlate with nautical miles, as meridians get closer together the closer they are to the poles, see <a class="reference internal" href="../fundamentals.html"><span class="doc">Fundamentals in Navigation</span></a> for more on this.</p>
 </div>
+</div>
 <div class="section" id="departure">
-<h3>Departure<a class="headerlink" href="#departure" title="Permalink to this headline">¶</a></h3>
+<h2>Departure<a class="headerlink" href="#departure" title="Permalink to this headline">¶</a></h2>
 <p><strong>Departure</strong> is the conversion of a Difference in Longitude (in minutes) to nautical miles. In order to do this we need to know the Latitude at which we are calculating the departure, because the meridians get closer together as you get closer to the poles.</p>
 <p>At 0° of latitude a minute of longitude is equivalent to a nautical mile.
 At 90° of latitude a minute of longitude is no distance at all, because that’s at the north or south pole.</p>
@@ -123,7 +124,6 @@ Departure_{nm} &amp;= D'Lon_{min} * \cos Lat \\
 Departure_{nm} &amp;= 600' * \cos 20° \\
 Departure_{nm} &amp;= 563.8155725 \text{ nautical miles}\end{split}\]</div>
 <p>With Departure in hand, we can move on to our first sailing, <a class="reference internal" href="parallel_sailing.html"><span class="doc">Parallel Sailing</span></a>.</p>
-</div>
 </div>
 </div>
 

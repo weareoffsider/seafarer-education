@@ -102,3 +102,11 @@
   padding-bottom: 50%;
   position: relative;
 }
+.MercatorSailingAB {
+  display: block;
+}
+.MercatorSailingAB__globe {
+  border: 1px solid black;
+  padding-bottom: 50%;
+  position: relative;
+}

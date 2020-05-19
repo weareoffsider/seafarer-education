@@ -4,6 +4,13 @@ import worldTopo from "./world-50m.json"
 import * as topojson from "topojson"
 import range from "lodash/range"
 
+export interface GlobePoint {
+  type: "dot"
+  lat: number
+  lon: number
+  text: string
+}
+
 export interface GlobeLine {
   type: "track" | "calculation" | "prediction" | "meridian" | "parallel"
   start_lat: number
@@ -14,6 +21,7 @@ export interface GlobeLine {
 
 export interface GlobeArgs {
   lines?: GlobeLine[]
+  points?: GlobePoint[]
   showLand?: boolean
 }
 
@@ -63,8 +71,7 @@ export default function (div: HTMLDivElement, args: GlobeArgs) {
     state.rotationOffsetX = offsetX
     state.rotationOffsetY = offsetY
 
-    console.log(state.x, state.y)
-    rotate(div, svg, state)
+    rotate(div, svg, state, currentArgs)
   })
 
   div.addEventListener("mouseup", function (e: MouseEvent) {
@@ -75,7 +82,7 @@ export default function (div: HTMLDivElement, args: GlobeArgs) {
   div.addEventListener("wheel", function (e: WheelEvent) {
     const scaleAdjust = e.deltaMode == 0 ? e.deltaY : e.deltaY * 20
     state.scale = Math.max(state.scale + scaleAdjust, 100)
-    rotate(div, svg, state)
+    rotate(div, svg, state, currentArgs)
   })
 
   window.addEventListener("resize", function () {
@@ -101,15 +108,12 @@ export default function (div: HTMLDivElement, args: GlobeArgs) {
       lonTotal += line.start_lon + line.end_lon
     })
 
-    console.log(lonTotal, latTotal)
-
     const mlon = lonTotal / (currentArgs.lines.length * 2)
     const mlat = latTotal / (currentArgs.lines.length * 2)
 
-    state.x = 180 - mlon
-    state.y = 180 + mlat
+    state.x = 0 - mlon
+    state.y = 0 - mlat
     state.scale = 400
-    console.log("CENTERING ON", mlon, mlat)
 
     render(div, svg, currentArgs, state)
   }
@@ -131,7 +135,8 @@ function render(
     .clipAngle(90)
     .precision(0.1)
 
-  const path = d3.geoPath().projection(projection.rotate([state.x, state.y, 0]))
+  const mainProjection = projection.rotate([state.x, state.y, 0])
+  const path = d3.geoPath().projection(mainProjection)
 
   const graticule = d3.geoGraticule()
 
@@ -264,6 +269,21 @@ function render(
         .attr("d", path)
     })
   }
+
+  if (args.points) {
+    args.points.forEach((p) => {
+      const pointRender = svg
+        .insert("g")
+        .attr("class", `point point--${p.type}`)
+        .attr(
+          "transform",
+          "translate(" + mainProjection([p.lon, p.lat]).join(",") + ")"
+        )
+
+      pointRender.insert("circle").attr("r", 2)
+      pointRender.insert("text").attr("y", -6).text(p.text)
+    })
+  }
 }
 
 function interpolateLine(line: GlobeLine) {
@@ -288,7 +308,12 @@ function interpolateLine(line: GlobeLine) {
   return interpolation
 }
 
-function rotate(div: HTMLDivElement, svg: any, state: GlobeState) {
+function rotate(
+  div: HTMLDivElement,
+  svg: any,
+  state: GlobeState,
+  args: GlobeArgs
+) {
   const width = div.offsetWidth - 2
   const height = div.offsetHeight - 2
 
@@ -299,7 +324,16 @@ function rotate(div: HTMLDivElement, svg: any, state: GlobeState) {
     .clipAngle(90)
     .precision(0.1)
 
-  const path = d3.geoPath().projection(projection.rotate([state.x, state.y, 0]))
+  const mainProjection = projection.rotate([state.x, state.y, 0])
+  const path = d3.geoPath().projection(mainProjection)
 
   svg.selectAll("path").attr("d", path)
+  if (args.points) {
+    svg
+      .selectAll("g.point")
+      .data(args.points)
+      .attr("transform", (p: GlobePoint) => {
+        return "translate(" + mainProjection([p.lon, p.lat]).join(",") + ")"
+      })
+  }
 }

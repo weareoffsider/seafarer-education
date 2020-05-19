@@ -5,3 +5,5 @@ Plane Sailing
 
     <div class="PlaneSailingAB">
     </div>
+
+Next up we have :doc:`./mercator_sailing`.

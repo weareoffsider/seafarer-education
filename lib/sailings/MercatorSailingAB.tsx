@@ -21,19 +21,23 @@ import {
   generateRandomLon,
 } from "./Shared"
 
-export class PlaneSailingABState {
+export class MercatorSailingABState {
   @observable point_a_lat: Latitude
   @observable point_a_lon: Longitude
   @observable point_b_lat: Latitude
   @observable point_b_lon: Longitude
+  @observable origin_meridional_part: number
+  @observable destination_meridional_part: number
   @observable showAnswer: boolean
   @observable showProforma: boolean
 
   constructor() {
-    this.point_a_lat = new Latitude(15, 37, "S")
-    this.point_a_lon = new Longitude(174, 14, "E")
-    this.point_b_lat = new Latitude(17, 18, "S")
-    this.point_b_lon = new Longitude(176, 25, "E")
+    this.point_a_lat = new Latitude(34, 40, "S")
+    this.point_a_lon = new Longitude(15, 20, "E")
+    this.point_b_lat = new Latitude(11, 46, "N")
+    this.point_b_lon = new Longitude(24, 39, "W")
+    this.origin_meridional_part = -2206.61
+    this.destination_meridional_part = 706.25
   }
 
   @action.bound
@@ -56,13 +60,15 @@ export class PlaneSailingABState {
     e.preventDefault()
     const chance = new Chance()
 
+    this.destination_meridional_part = 0
+    this.origin_meridional_part = 0
     this.point_a_lat = generateRandomLat()
     this.point_a_lon = generateRandomLon()
     this.point_b_lat = latFromFloat(
-      this.point_a_lat.asFloat() + chance.floating({ min: -5, max: 5 })
+      this.point_a_lat.asFloat() + chance.floating({ min: -30, max: 30 })
     )
     this.point_b_lon = lonFromFloat(
-      this.point_a_lon.asFloat() + chance.floating({ min: -5, max: 5 })
+      this.point_a_lon.asFloat() + chance.floating({ min: -30, max: 30 })
     )
     this.showAnswer = false
     // this.showProforma = false
@@ -75,7 +81,7 @@ export default function (root: HTMLDivElement) {
   const proforma = document.createElement("form")
   proforma.classList.add("ParallelSailing_proforma")
 
-  const state = new PlaneSailingABState()
+  const state = new MercatorSailingABState()
 
   root.appendChild(globeContainer)
   root.appendChild(proforma)
@@ -86,7 +92,7 @@ export default function (root: HTMLDivElement) {
   window.requestAnimationFrame(render)
 
   function render() {
-    renderWithContext(proforma, <PlaneSailingABProforma state={state} />)
+    renderWithContext(proforma, <MercatorSailingABProforma state={state} />)
 
     globeUpdate({
       lines: [
@@ -130,7 +136,9 @@ export default function (root: HTMLDivElement) {
   }
 }
 
-export function PlaneSailingABProforma(props: { state: PlaneSailingABState }) {
+export function MercatorSailingABProforma(props: {
+  state: MercatorSailingABState
+}) {
   const { state } = props
   const { localize: l10n } = useContext(RenderContext)
 
@@ -142,8 +150,11 @@ export function PlaneSailingABProforma(props: { state: PlaneSailingABState }) {
     const mlat = latFromFloat(
       (state.point_a_lat.asFloat() + state.point_b_lat.asFloat()) / 2
     )
-    const departure = dlon.asMinutes() * cos(mlat.asFloat())
-    const course_angle = atan(departure / dlat.asMinutes())
+    const haveMPs = !!(
+      state.destination_meridional_part || state.origin_meridional_part
+    )
+    const dmp = state.destination_meridional_part - state.origin_meridional_part
+    const course_angle = atan(dlon.asMinutes() / Math.abs(dmp))
     const true_course = courseAngleToTrue(dlat.sign, course_angle, dlon.sign)
     const distance = dlat.asMinutes() / cos(course_angle)
 
@@ -172,42 +183,48 @@ export function PlaneSailingABProforma(props: { state: PlaneSailingABState }) {
           {state.showAnswer && <td>{dlon.asMinutes().toFixed(2) + "'"}</td>}
         </tr>
         <tr>
-          <td>{"M'Lat"}</td>
-          {state.showAnswer && <td>{mlat.asString()}</td>}
-        </tr>
-        <tr>
+          <td>{"Origin MP"}</td>
           <td>
-            {"Departure"}
-            <sub>{"nm"}</sub>
-          </td>
-          <td>
-            {"D'Lon"}
-            <sub>{"min"}</sub>
-            {" * cos M'Lat"}
+            <input
+              onChange={(e) =>
+                (state.origin_meridional_part = (e.target as HTMLInputElement).valueAsNumber)
+              }
+              type="number"
+              min="0"
+              value={state.origin_meridional_part}
+            />
           </td>
         </tr>
         <tr>
+          <td>{"Destination MP"}</td>
           <td>
-            {"Departure"}
-            <sub>{"nm"}</sub>
+            <input
+              onChange={(e) =>
+                (state.destination_meridional_part = (e.target as HTMLInputElement).valueAsNumber)
+              }
+              type="number"
+              min="0"
+              value={state.destination_meridional_part}
+            />
           </td>
-          {state.showAnswer && (
-            <td>{departure.toFixed(2) + " nautical miles"}</td>
-          )}
+        </tr>
+        <tr>
+          <td>{"Difference MP"}</td>
+          <td>{state.showAnswer && haveMPs && Math.abs(dmp)}</td>
         </tr>
         <tr>
           <td>{"Course Angle"}</td>
           <td>
             {"tan"}
             <sup>{"-1"}</sup>
-            {"(Departure / D'Lat"}
+            {"(D'Lon / DMP"}
             <sub>{"min"}</sub>
             {")"}
           </td>
         </tr>
         <tr>
           <td>{"Course Angle"}</td>
-          {state.showAnswer && (
+          {state.showAnswer && haveMPs && (
             <td>{`${dlat.sign} ${course_angle.toFixed(1)}° ${dlon.sign}`}</td>
           )}
         </tr>
@@ -227,7 +244,7 @@ export function PlaneSailingABProforma(props: { state: PlaneSailingABState }) {
             {"Distance"}
             <sub>{"nm"}</sub>
           </td>
-          {state.showAnswer && (
+          {state.showAnswer && haveMPs && (
             <td>{`${distance.toFixed(2)} nautical miles`}</td>
           )}
         </tr>
@@ -251,25 +268,25 @@ export function PlaneSailingABProforma(props: { state: PlaneSailingABState }) {
     <table>
       <tbody>
         <tr>
-          <td>{l10n.t("plane_sailing_ab.origin_latitude")}</td>
+          <td>{l10n.t("mercator_sailing_ab.origin_latitude")}</td>
           <td>
             <LatitudeInput lat={state.point_a_lat} />
           </td>
         </tr>
         <tr>
-          <td>{l10n.t("plane_sailing_ab.origin_longitude")}</td>
+          <td>{l10n.t("mercator_sailing_ab.origin_longitude")}</td>
           <td>
             <LongitudeInput lon={state.point_a_lon} />
           </td>
         </tr>
         <tr>
-          <td>{l10n.t("plane_sailing_ab.destination_latitude")}</td>
+          <td>{l10n.t("mercator_sailing_ab.destination_latitude")}</td>
           <td>
             <LatitudeInput lat={state.point_b_lat} />
           </td>
         </tr>
         <tr>
-          <td>{l10n.t("plane_sailing_ab.destination_longitude")}</td>
+          <td>{l10n.t("mercator_sailing_ab.destination_longitude")}</td>
           <td>
             <LongitudeInput lon={state.point_b_lon} />
           </td>
