@@ -55,6 +55,12 @@
   stroke: #fff;
   stroke-width: 0.5px;
 }
+.Globe .great-circle {
+  fill: none;
+  stroke: orange;
+  stroke-width: 0.5px;
+  stroke-opacity: 0.5;
+}
 .Globe .track {
   fill: none;
   stroke: red;
@@ -106,6 +112,22 @@
   display: block;
 }
 .MercatorSailingAB__globe {
+  border: 1px solid black;
+  padding-bottom: 50%;
+  position: relative;
+}
+.GreatCircleSailing {
+  display: block;
+}
+.GreatCircleSailing__globe {
+  border: 1px solid black;
+  padding-bottom: 50%;
+  position: relative;
+}
+.CompositeGreatCircleSailing {
+  display: block;
+}
+.CompositeGreatCircleSailing__globe {
   border: 1px solid black;
   padding-bottom: 50%;
   position: relative;

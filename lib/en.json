@@ -16,6 +16,20 @@
     "destination_latitude": "Destination Latitude",
     "destination_longitude": "Destination Longitude"
   },
+  "great_circle_sailing": {
+    "origin_latitude": "Origin Latitude",
+    "origin_longitude": "Origin Longitude",
+    "destination_latitude": "Destination Latitude",
+    "destination_longitude": "Destination Longitude",
+    "calculation_pole": "Calculation Pole"
+  },
+  "composite_great_circle_sailing": {
+    "origin_latitude": "Origin Latitude",
+    "origin_longitude": "Origin Longitude",
+    "destination_latitude": "Destination Latitude",
+    "destination_longitude": "Destination Longitude",
+    "limiting_latitude": "Limiting Latitude"
+  },
   "show_proforma": "Show Proforma",
   "show_answer": "Show Answer",
   "generate_new_question": "Generate New Question",

@@ -4,6 +4,19 @@ import worldTopo from "./world-50m.json"
 import * as topojson from "topojson"
 import range from "lodash/range"
 
+import {
+  Latitude,
+  Longitude,
+  latFromFloat,
+  lonFromFloat,
+  acos,
+  cos,
+  sin,
+  asin,
+  tan,
+  atan,
+} from "../sailings/Shared"
+
 export interface GlobePoint {
   type: "dot"
   lat: number
@@ -17,10 +30,13 @@ export interface GlobeLine {
   start_lon: number
   end_lat: number
   end_lon: number
+  showVertex?: boolean
+  showWhole?: boolean
 }
 
 export interface GlobeArgs {
   lines?: GlobeLine[]
+  circles?: GlobeLine[]
   points?: GlobePoint[]
   showLand?: boolean
 }
@@ -39,7 +55,7 @@ export default function (div: HTMLDivElement, args: GlobeArgs) {
   const state: GlobeState = {
     x: 180,
     y: 0,
-    scale: 400,
+    scale: 100,
     rotationActive: false,
   }
 
@@ -102,18 +118,29 @@ export default function (div: HTMLDivElement, args: GlobeArgs) {
 
     let latTotal = 0
     let lonTotal = 0
+    let points = 0
 
-    currentArgs.lines.forEach((line) => {
-      latTotal += line.start_lat + line.end_lat
-      lonTotal += line.start_lon + line.end_lon
-    })
+    if (currentArgs.lines) {
+      currentArgs.lines.forEach((line) => {
+        points++
+        latTotal += line.start_lat + line.end_lat
+        lonTotal += line.start_lon + line.end_lon
+      })
+    }
+    if (currentArgs.circles) {
+      currentArgs.circles.forEach((line) => {
+        points++
+        latTotal += line.start_lat + line.end_lat
+        lonTotal += line.start_lon + line.end_lon
+      })
+    }
 
-    const mlon = lonTotal / (currentArgs.lines.length * 2)
-    const mlat = latTotal / (currentArgs.lines.length * 2)
+    const mlon = lonTotal / (points * 2)
+    const mlat = latTotal / (points * 2)
 
     state.x = 0 - mlon
     state.y = 0 - mlat
-    state.scale = 400
+    state.scale = 100
 
     render(div, svg, currentArgs, state)
   }
@@ -270,6 +297,56 @@ function render(
     })
   }
 
+  if (args.circles) {
+    args.circles.forEach((line) => {
+      if (line.showWhole) {
+        const circleFeature = {
+          type: "Feature",
+          geometry: {
+            type: "LineString",
+            coordinates: interpolateWholeCircle(line),
+          },
+        }
+
+        const circleClasses = `great-circle`
+        svg
+          .insert("path", `.${circleClasses}`)
+          .datum(circleFeature)
+          .attr("class", circleClasses)
+          .attr("d", path)
+      }
+
+      const feature = {
+        type: "Feature",
+        geometry: {
+          type: "LineString",
+          coordinates: interpolateCircle(line),
+        },
+      }
+      const classes = `track track--${line.type}`
+
+      svg
+        .insert("path", `.${classes}`)
+        .datum(feature)
+        .attr("class", classes)
+        .attr("d", path)
+
+      if (line.showVertex) {
+        const [vlon, vlat] = getVertex(line)
+        const pointRender = svg
+          .insert("g")
+          .attr("class", `vertex`)
+          .attr(
+            "transform",
+            "translate(" + mainProjection([vlon, vlat]).join(",") + ")"
+          )
+
+        pointRender.insert("circle").attr("r", 2)
+        pointRender.insert("text").attr("y", -6).text("V")
+      }
+    })
+  }
+
   if (args.points) {
     args.points.forEach((p) => {
       const pointRender = svg
@@ -284,6 +361,120 @@ function render(
       pointRender.insert("text").attr("y", -6).text(p.text)
     })
   }
+}
+
+function getVertex(line: GlobeLine) {
+  const dlat = line.end_lat - line.start_lat
+  let dlon = line.end_lon - line.start_lon
+  if (dlon > 180) {
+    dlon -= 360
+  } else if (dlon < -180) {
+    dlon += 360
+  }
+
+  const pole = new Latitude(90, 0, dlat > 0 ? "N" : "S")
+  const a_lat = latFromFloat(line.start_lat)
+  const b_lat = latFromFloat(line.end_lat)
+
+  const PA = a_lat.getDlat(pole)
+  const PB = b_lat.getDlat(pole)
+
+  const distanceDegs = acos(
+    cos(PA.asDegrees()) * cos(PB.asDegrees()) +
+      sin(PA.asDegrees()) * sin(PB.asDegrees()) * cos(dlon)
+  )
+
+  const distance = distanceDegs * 60
+
+  const initialCourseAngle = acos(
+    (cos(PB.asDegrees()) - cos(PA.asDegrees()) * cos(distanceDegs)) /
+      (sin(PA.asDegrees()) * sin(distanceDegs))
+  )
+
+  const vPV = asin(cos(90 - PA.asDegrees()) * cos(90 - initialCourseAngle))
+  const vP = atan(sin(90 - PA.asDegrees()) / tan(90 - initialCourseAngle)) + -90
+
+  let vlon = dlon > 0 ? line.start_lon - vP : line.start_lon + vP
+  if (vlon > 180) {
+    vlon -= 360
+  } else if (vlon < -180) {
+    vlon += 360
+  }
+
+  const vlat =
+    initialCourseAngle > 90
+      ? pole.sign == "N"
+        ? -90 + vPV
+        : 90 - vPV
+      : pole.sign == "N"
+      ? 90 - vPV
+      : -90 + vPV
+
+  // console.log(
+  //   "vertex",
+  //   line.start_lon,
+  //   initialCourseAngle,
+  //   "vP",
+  //   vP,
+  //   "vPV",
+  //   vPV,
+  //   "vlon",
+  //   vlon,
+  //   "vlat",
+  //   vlat,
+  //   pole.sign,
+  //   dlat,
+  //   dlon
+  // )
+
+  return [vlon, vlat]
+}
+
+function interpolateCircle(line: GlobeLine) {
+  const dlat = line.end_lat - line.start_lat
+  let dlon = line.end_lon - line.start_lon
+  if (dlon > 180) {
+    dlon -= 360
+  } else if (dlon < -180) {
+    dlon += 360
+  }
+
+  const [vlon, vlat] = getVertex(line)
+
+  const steps = Math.round(Math.abs(dlon))
+
+  const interpolation = range(steps).map((step) => {
+    const latdiff = dlat * (step / (steps - 1))
+    const londiff = dlon * (step / (steps - 1))
+    const i_lon = line.start_lon + londiff
+    const iP = i_lon - vlon
+    const iPV = 90 - vlat
+    const iPI = atan(sin(90 - iP) / tan(iPV)) + -90
+
+    const calc_lat = 90 + iPI
+    const calc_lon = line.start_lon + londiff
+
+    return [calc_lon, calc_lat]
+  })
+
+  return interpolation
+}
+
+function interpolateWholeCircle(line: GlobeLine) {
+  const [vlon, vlat] = getVertex(line)
+
+  const interpolation = range(361).map((step) => {
+    const londiff = step
+    const iP = londiff
+    const iPV = 90 - vlat
+    const iPI = atan(sin(90 - iP) / tan(iPV)) + -90
+
+    const calc_lat = iPI + -90
+
+    return [vlon + londiff, calc_lat]
+  })
+
+  return interpolation
 }
 
 function interpolateLine(line: GlobeLine) {
@@ -334,6 +525,16 @@ function rotate(
       .data(args.points)
       .attr("transform", (p: GlobePoint) => {
         return "translate(" + mainProjection([p.lon, p.lat]).join(",") + ")"
+      })
+  }
+  if (args.circles) {
+    const withVertex = args.circles.filter((l) => l.showVertex)
+    svg
+      .selectAll("g.vertex")
+      .data(withVertex)
+      .attr("transform", (l: GlobeLine) => {
+        const [vlon, vlat] = getVertex(l)
+        return "translate(" + mainProjection([vlon, vlat]).join(",") + ")"
       })
   }
 }

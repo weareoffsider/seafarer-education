@@ -7,3 +7,5 @@ Instructions coming soon...
 
     <div class="MercatorSailingAB">
     </div>
+
+Next up we have :doc:`./great_circle_sailing`.
