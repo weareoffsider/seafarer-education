@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Digital Charts &#8212; Seafarer 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/assets/SeafarerMain.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="/assets/SeafarerClient.pkg.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Science" href="../../science/index.html" />
+    <link rel="prev" title="RADAR" href="radar.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="digital-charts">
+<h1>Digital Charts<a class="headerlink" href="#digital-charts" title="Permalink to this headline">¶</a></h1>
+<p>Before talking about Digital Chart Systems, it’s important to understand the two categories of Digital Charts there can be. A chart can either be in a <strong>Raster</strong> or a <strong>Vector</strong> format, and to illustrate this lets talk briefly about images rather than charts.</p>
+<p><strong>Raster</strong> images only store pixels, pixels being the individual dots that make up a picture. When you zoom in to a raster image, there is not any new information to be seen, so the pixels just get larger and larger.</p>
+<p><strong>Vector</strong> images instead store information about how the image was constructed. Where the lines are, how thick they are, what colour, blocks of text, numbers and so on. That information is then converted in to an image when your computer looks at it, appropriate to the level of zoom you’ve used.</p>
+<p><a href="https://commons.wikimedia.org/wiki/File:VectorBitmapExample.svg#/media/File:VectorBitmapExample.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/VectorBitmapExample.svg/1200px-VectorBitmapExample.svg.png" alt="VectorBitmapExample.svg"></a><br>By The original uploader was <a href="https://en.wikipedia.org/wiki/User:Darth_Stabro" class="extiw" title="wikipedia:User:Darth Stabro">Darth Stabro</a> at <a href="https://en.wikipedia.org/wiki/" class="extiw" title="wikipedia:">English Wikipedia</a>. - Transferred from <span class="plainlinks"><a class="external text" href="https://en.wikipedia.org">en.wikipedia</a></span> to Commons by <a href="//commons.wikimedia.org/wiki/User:Pbroks13" title="User:Pbroks13">Pbroks13</a> using <a href="https://tools.wmflabs.org/commonshelper/" class="extiw" title="toollabs:commonshelper/">CommonsHelper</a>., <a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=15789788">Link</a></p><p>Because Vector images store information and not pixels, they can pack a lot more detail in them. Rather than storing every pixel for a square that’s 400 by 400 pixels, a vector format can just say that’s there’s a 400 by 400 square and what colour it is, and the computer can fill in the rest.</p>
+<p>These differences are important to keep in mind when we start talking about <strong>Raster</strong> and <strong>Vector</strong> charts.</p>
+<div class="section" id="raster-charts">
+<h2>Raster Charts<a class="headerlink" href="#raster-charts" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.admiralty.co.uk/digital-services/digital-charts/admiralty-raster-chart-service?selectTab=Features">Raster charts</a> only store the pixels of the chart. Just like a paper chart, the information that is on the chart is all that you’ll be able to see. Zooming in will not give you any new information, and eventually be pixellated. You can’t rotate the chart without the text and depth soundings also rotating.</p>
+<p>With these drawbacks, you might wonder why Raster Charts are common. The production process for creating a Raster Chart is essentially identical to that of a paper chart, all a Hydrographic organisation needs to do is scan an existing paper chart or output them directly to Raster from their production process. If there is a current paper chart for an area, there is almost certainly a way to get a current raster chart for that area as well.</p>
+</div>
+<div class="section" id="vector-charts">
+<h2>Vector Charts<a class="headerlink" href="#vector-charts" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.admiralty.co.uk/digital-services/digital-charts/admiralty-vector-chart-service">Vector charts</a> don’t store what a chart looks like, but rather the <strong>information</strong> that exists on a chart. Exact positions and characteristics of depth soundings, depth contour lines, buoys, lighthouses, and all other features relevant to navigation. The computer is responsible for drawing that information on screen (and for certain equipment that means adhering to software standards).</p>
+<p>The fact that Vector Charts only store information gives them functionality that Raster Charts can’t achieve. The depth soundings are machine readable, so the computer can warn you when your vessel is headed in to danger. You can click on a light and potentially get more detailed information. You can show and hide information - a potentially dangerous feature but more on that later.</p>
+<p>The only reason Vector Charts aren’t universal is partially for familiarity - it’s a new technology with it’s own risks that require training - and partially because they are more effort to produce. Hydrographic organisations need to ensure their Vector information is stored in a format that navigation software can use effectively, and that requires new production processes which Raster Charts don’t require.</p>
+<p>Nonetheless, at the time of writing most of the world is covered by quality Vector Charts issued by a governmental Hydrographic office, so Raster charts have dwindling relevancy in digital navigation.</p>
+</div>
+<div class="section" id="raster-vector-hybrids">
+<h2>Raster Vector Hybrids<a class="headerlink" href="#raster-vector-hybrids" title="Permalink to this headline">¶</a></h2>
+<p>Out of historical interest, in the early days of digital charts there were such things as Raster Vector Hybrid Charts, which had a base layer of the Raster Chart, and then had vector information laid over the top, such as lights, marks, and potentially soundings. These aren’t common these days, but it is an example of how Hydrographic offices bridged the gap when they weren’t fully equipped to produce proper Vector charts.</p>
+</div>
+<div class="section" id="raster-vector-comparisons">
+<h2>Raster - Vector Comparisons<a class="headerlink" href="#raster-vector-comparisons" title="Permalink to this headline">¶</a></h2>
+<p>It’s good to know the ways the two formats can be compared, as it highlights how their capabilities differ.</p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Raster Vector Comparison</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Raster</p></th>
+<th class="head"><p>Vector</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Training</p></td>
+<td><p>Requires no additional training for reading - Less usage training required.</p></td>
+<td><p>Requires training for correct configuration, reading and usage.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Production</p></td>
+<td><p>Uses same process as paper charts.</p></td>
+<td><p>Created and distributed with different processes.</p></td>
+</tr>
+<tr class="row-even"><td><p>Cost</p></td>
+<td><p>Typically cheaper.</p></td>
+<td><p>Typically more expensive and subscription based.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Visibility</p></td>
+<td><p>All chart information visible at all times.</p></td>
+<td><p>Visible information is customised by the officer.</p></td>
+</tr>
+<tr class="row-even"><td><p>Zooming</p></td>
+<td><p>Pixellates when zoomed in.</p></td>
+<td><p>Can zoom in while still having sharp lines and iconography.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rotation</p></td>
+<td><p>Cannot be readably rotated.</p></td>
+<td><p>Can rotate while keeping text correctly oriented.</p></td>
+</tr>
+<tr class="row-even"><td><p>File Size</p></td>
+<td><p>Larger</p></td>
+<td><p>Smaller</p></td>
+</tr>
+<tr class="row-odd"><td><p>Chart Seams</p></td>
+<td><p>Charts do not join together, must select which charts to display</p></td>
+<td><p>Chart information is seamlessly joined, the software selecting the appropriate charts to load for your current viewport.</p></td>
+</tr>
+<tr class="row-even"><td><p>Alarm Settings</p></td>
+<td><p>Can’t trigger alarms based on pixel information.</p></td>
+<td><p>Can trigger alarms based on sounding information.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="using-digital-charts">
+<h2>Using Digital Charts<a class="headerlink" href="#using-digital-charts" title="Permalink to this headline">¶</a></h2>
+<p>Using Raster or Vector charts requires software and equipment that can read and display them. Also, they have to adhere to certain standards in order to be used in an official capacity as a primary means of navigation, so at this point it makes sense to look in to <a class="reference internal" href="digital_charting_standards.html"><span class="doc">&lt;no title&gt;</span></a>.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Seafarer</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Navigation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../fundamentals.html">Fundamentals in Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mechanical_nav/index.html">Mechanical Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mathematical_nav/index.html">Mathematical Navigation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Electronic Navigation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../science/index.html">Science</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Navigation</a><ul>
+  <li><a href="index.html">Electronic Navigation</a><ul>
+      <li>Previous: <a href="radar.html" title="previous chapter">RADAR</a></li>
+      <li>Next: <a href="../../science/index.html" title="next chapter">Science</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Weekends.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/navigation/electronic_nav/digital_charts.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
