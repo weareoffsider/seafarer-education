@@ -20,6 +20,17 @@ Position spheres (not celestial as it is based on range from satellite)
 Dilution of Precision
 HDOP & PDOP
 
+All on same frequency. Code Division Multiple Access transmission allows this.
+
+Continuously broadcasting on L1 and L2
+
+L1 for course acquisition
+
+Navigation messages broadcast the:
+satellite clock
+GPS time relationship
+ephemeris (satellite orbit) every 2 hours
+Almanac (network synopsis and error correction) - improves accuracy against correction ever 24 hours
 
 
 

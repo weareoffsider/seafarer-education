@@ -7,3 +7,5 @@ Electronic Navigation refers to electronic equipment that forms an integral part
    :maxdepth: 2
 
    radar
+   digital_charts
+   digital_charting_standards
