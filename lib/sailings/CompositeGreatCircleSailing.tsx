@@ -158,6 +158,7 @@ export default function (root: HTMLDivElement) {
           start_lon: state.point_a_lon.asFloat(),
           end_lat: vLat.asFloat(),
           end_lon: vLon.asFloat(),
+          showWhole: true,
         },
         {
           type: "prediction",
@@ -165,6 +166,7 @@ export default function (root: HTMLDivElement) {
           start_lon: wLon.asFloat(),
           end_lat: state.point_b_lat.asFloat(),
           end_lon: state.point_b_lon.asFloat(),
+          showWhole: true,
         },
       ],
       lines: [
