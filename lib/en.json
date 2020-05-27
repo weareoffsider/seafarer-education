@@ -30,6 +30,26 @@
     "destination_longitude": "Destination Longitude",
     "limiting_latitude": "Limiting Latitude"
   },
+  "meridian_passage": {
+    "gp_declination": "GP Declination",
+    "gp_longitude": "GP Longitude",
+    "observation_altitude": "Observed Altitude",
+    "observation_direction": "Observed Direction"
+  },
+  "amplitude": {
+    "gp_declination": "GP Declination",
+    "gp_longitude": "GP Longitude",
+    "dr_latitude": "DR Latitude",
+    "observation_altitude": "Observed Altitude",
+    "observation_direction": "Observed Direction"
+  },
+  "azimuth": {
+    "gp_declination": "GP Declination",
+    "gp_longitude": "GP Longitude",
+    "dr_latitude": "DR Latitude",
+    "dr_longitude": "DR Longitude",
+    "observation_direction": "Observed Direction"
+  },
   "show_proforma": "Show Proforma",
   "show_answer": "Show Answer",
   "generate_new_question": "Generate New Question",

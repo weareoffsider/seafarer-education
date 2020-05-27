@@ -132,3 +132,27 @@
   padding-bottom: 50%;
   position: relative;
 }
+.MeridianPassage {
+  display: block;
+}
+.MeridianPassage__globe {
+  border: 1px solid black;
+  padding-bottom: 50%;
+  position: relative;
+}
+.Amplitude {
+  display: block;
+}
+.Amplitude__globe {
+  border: 1px solid black;
+  padding-bottom: 50%;
+  position: relative;
+}
+.Azimuth {
+  display: block;
+}
+.Azimuth__globe {
+  border: 1px solid black;
+  padding-bottom: 50%;
+  position: relative;
+}

@@ -30,6 +30,20 @@ export function atan(distance: number) {
 ;(window as any).sin = sin
 ;(window as any).asin = asin
 
+export function amplitudeAngleToTrue(
+  lon: "E" | "W",
+  angle: number,
+  lat: "N" | "S"
+) {
+  return lon == "E"
+    ? lat == "N"
+      ? 90 - angle
+      : 90 + angle
+    : lat == "N"
+    ? 270 + angle
+    : 270 - angle
+}
+
 export function courseAngleToTrue(
   lat: "N" | "S",
   angle: number,

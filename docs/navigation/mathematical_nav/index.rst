@@ -14,3 +14,5 @@ This section covers the techniques of Mathematical Navigation. Many of the techn
    mercator_sailing
    great_circle_sailing
    composite_great_circle_sailing
+   meridian_passage
+   celestial_bearings

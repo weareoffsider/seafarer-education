@@ -5,6 +5,9 @@ import MercatorSailingAB from "./sailings/MercatorSailingAB"
 import ParallelSailing from "./sailings/ParallelSailing"
 import GreatCircleSailing from "./sailings/GreatCircleSailing"
 import CompositeGreatCircleSailing from "./sailings/CompositeGreatCircleSailing"
+import MeridianPassage from "./celestial/MeridianPassage"
+import Amplitude from "./celestial/Amplitude"
+import Azimuth from "./celestial/Azimuth"
 
 document.addEventListener("DOMContentLoaded", function (event) {
   const parallelSailing = document.querySelectorAll(".ParallelSailing")
@@ -19,4 +22,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
     ".CompositeGreatCircleSailing"
   )
   Array.from(compositeGreatCircleSailing).forEach(CompositeGreatCircleSailing)
+  const meridianPassage = document.querySelectorAll(".MeridianPassage")
+  Array.from(meridianPassage).forEach(MeridianPassage)
+  const amplitude = document.querySelectorAll(".Amplitude")
+  Array.from(amplitude).forEach(Amplitude)
+  const azimuth = document.querySelectorAll(".Azimuth")
+  Array.from(azimuth).forEach(Azimuth)
 })

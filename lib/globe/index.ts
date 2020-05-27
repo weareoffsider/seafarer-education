@@ -146,6 +146,8 @@ export default function (div: HTMLDivElement, args: GlobeArgs) {
   }
 }
 
+let sphereIdNum = 0
+
 function render(
   div: HTMLDivElement,
   svg: any,
@@ -167,16 +169,24 @@ function render(
 
   const graticule = d3.geoGraticule()
 
+  const sphereId = `sphere-${sphereIdNum++}`
+
   svg
     .append("defs")
     .append("path")
     .datum({ type: "Sphere" })
-    .attr("id", "sphere")
+    .attr("id", sphereId)
     .attr("d", path)
 
-  svg.append("use").attr("class", "stroke").attr("xlink:href", "#sphere")
+  svg
+    .append("use")
+    .attr("class", "stroke")
+    .attr("xlink:href", "#" + sphereId)
 
-  svg.append("use").attr("class", "fill").attr("xlink:href", "#sphere")
+  svg
+    .append("use")
+    .attr("class", "fill")
+    .attr("xlink:href", "#" + sphereId)
 
   svg.append("path").datum(graticule).attr("class", "graticule").attr("d", path)
 
