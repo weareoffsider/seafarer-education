@@ -18,6 +18,7 @@ Thanks for taking a look!
    :maxdepth: 2
 
    navigation/index
+   watchkeeping/index
    science/index
 
 
