@@ -219,7 +219,7 @@ export function PlaneSailingABProforma(props: { state: PlaneSailingABState }) {
           <td>
             {"D'Lat"}
             <sub>{"min"}</sub>
-            {" * cos Course Angle"}
+            {" / cos Course Angle"}
           </td>
         </tr>
         <tr>

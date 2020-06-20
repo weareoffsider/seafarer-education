@@ -5,3 +5,5 @@ A large amount of our marine navigation is done in the context of charts. 2 dime
 
 .. toctree::
    :maxdepth: 2
+
+   ./chart_basics
