@@ -58,6 +58,3 @@ The direction is also referenced to true North :math:`156° T`, Magnetic North :
 
 **Compass** directions are specific to your particular Magnetic Compass, and are determined by the magnetic interference of your own ship at particular heading (referred to as Deviation).
 
-.. Position on the Earth
-.. ---------------------
-.. Our position on the Earth is defined with Latitude and Longitude. Latitude is our distance from the equator, either north or south. Latitude can be anywhere between 90° North and 90° South. Longitude is our distance from a designated 0 point

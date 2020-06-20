@@ -37,9 +37,38 @@
             
   <div class="section" id="parallel-sailing">
 <h1>Parallel Sailing<a class="headerlink" href="#parallel-sailing" title="Permalink to this headline">¶</a></h1>
-<p>Instructions coming soon…</p>
+<p>Parallel Sailing is the least complicated passage to calculate, travelling West or East and staying on the same line of Latitude the entire time. Because of this, all you need to calculate is:</p>
+<ul class="simple">
+<li><p>the Difference in Longitude (degrees, direction, and minutes)</p></li>
+<li><p>the Departure (nautical miles covered)</p></li>
+</ul>
+<div class="section" id="example-question-a-to-b">
+<h2>Example Question: A to B<a class="headerlink" href="#example-question-a-to-b" title="Permalink to this headline">¶</a></h2>
+<p>You are sailing from a position A: <span class="math notranslate nohighlight">\(35° 42.7' N :: 120° 32.7' E\)</span> to position B: <span class="math notranslate nohighlight">\(35° 42.7' N :: 150° 35.4' E\)</span>. Calculate the course and distance covered between these two points.</p>
+<p>We can see the Latitude is the same at both points, so this is a Parallel Sailing Question. Find the D’Lon:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Dest'Lon &amp;= E 150° 35.4' \\
+Dest'Lon &amp;= + 150° 35.4' \\
+Origin'Lon &amp;= E 120° 32.7' \\
+Origin'Lon &amp;= + 120° 32.7' \\
+D'Lon &amp;= Dest'Lon - Origin'Lon \\
+D'Lon &amp;= + 30° 02.7' \\
+D'Lon &amp;= E 30° 02.7'\end{split}\]</div>
+<p>Because the D’Lon is positive and Easterly, the course to steer will be East, or <span class="math notranslate nohighlight">\(090° T\)</span>. All that’s left is to find out the distance travelled, which we can do with the D’Lon in minutes, and our Departure Formula using the Latitude:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}D'Lon_{min} &amp;= D'Lon * 60 \\
+D'Lon_{min} &amp;= 1802.7' \\
+Lat &amp;= N 35° 42.7' \\
+Lat &amp;= + 35° 42.7' \\
+Departure_{nm} &amp;= D'Lon_{min} * Cos Lat \\
+Departure_{nm} &amp;= 1463.728744\end{split}\]</div>
+<p>With that, we find that the distance between the points is 1,463.728744 nautical miles.</p>
+</div>
+<div class="section" id="question-generator-a-to-b">
+<h2>Question Generator: A to B<a class="headerlink" href="#question-generator-a-to-b" title="Permalink to this headline">¶</a></h2>
 <div class="ParallelSailing">
 </div><p>Next up we have <a class="reference internal" href="plane_sailing.html"><span class="doc">Plane Sailing</span></a>.</p>
+</div>
 </div>
 
 
