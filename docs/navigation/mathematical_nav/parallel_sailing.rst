@@ -34,9 +34,6 @@ Because the D'Lon is positive and Easterly, the course to steer will be East, or
 
 With that, we find that the distance between the points is 1,463.728744 nautical miles.
 
-
-
-
 Question Generator: A to B
 --------------------------
 
@@ -45,4 +42,4 @@ Question Generator: A to B
     <div class="ParallelSailing">
     </div>
 
-Next up we have :doc:`./plane_sailing`.
+Once you're happy working out the D'Lon and Departure for Parallel Sailing, it's time to move on to :doc:`./plane_sailing`.
