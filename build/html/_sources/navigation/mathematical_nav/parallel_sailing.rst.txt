@@ -9,7 +9,7 @@ Parallel Sailing is the least complicated passage to calculate, travelling West 
 Example Question: A to B
 --------------------------
 
-You are sailing from a position A: :math:`35° 42.7' N :: 120° 32.7' E` to position B: :math:`35° 42.7' N :: 150° 35.4' E`. Calculate the course and distance covered between these two points.
+You are sailing from position A: :math:`35° 42.7' N :: 120° 32.7' E` to position B: :math:`35° 42.7' N :: 150° 35.4' E`. Calculate the course and distance covered between these two points.
 
 We can see the Latitude is the same at both points, so this is a Parallel Sailing Question. Find the D'Lon:
 

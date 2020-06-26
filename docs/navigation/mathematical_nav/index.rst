@@ -10,6 +10,7 @@ This section covers the techniques of Mathematical Navigation. Many of the techn
 
    latitude_and_longitude_in_calculations
    parallel_sailing
+   course_angles
    plane_sailing
    mercator_sailing
    great_circle_sailing

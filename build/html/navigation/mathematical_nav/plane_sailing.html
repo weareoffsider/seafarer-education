@@ -18,7 +18,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Mercator Sailing" href="mercator_sailing.html" />
-    <link rel="prev" title="Parallel Sailing" href="parallel_sailing.html" />
+    <link rel="prev" title="Course Angles" href="course_angles.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -43,12 +43,83 @@
 <p>We construct a right angled triangle using the D’Lon in minutes, and the Departure. In order to calculate the Departure we need a Latitude, so we use the mean (average) of the Origin and Destination Latitude, referred to as M’Lat. Our Right Angle triangle ends up looking like this, we always draw a line South or North from the Origin first, and then go East or West to the Destination.</p>
 <img alt="../../_images/plane_sailing_1.svg" src="../../_images/plane_sailing_1.svg" /><p>In order to solve the triangle and get our distance we follow these steps:</p>
 <ol class="arabic simple">
-<li><p>Calculate the D’Lon and D’Lat between the two points.</p></li>
+<li><p>Calculate the Difference in Latitude and Longitude (D’Lon and D’Lat) between the two points.</p></li>
 <li><p>Calculate the Mean latitude (M’Lat) between the two latitudes.</p></li>
 <li><p>Calculate the Departure using <span class="math notranslate nohighlight">\(D'Lon_{min} * cos M'Lat\)</span>.</p></li>
 <li><p>Using the tangent right triangle rule, calculate the Course Angle: <span class="math notranslate nohighlight">\(\tan^{-1 }(Departure_{nm} \div D'Lon_{min})\)</span>.</p></li>
 <li><p>Using the cosine right triangle rule, calculate the Distance: <span class="math notranslate nohighlight">\(D'Lat_{min} \div \cos \text{Course Angle}\)</span></p></li>
 </ol>
+</div>
+<div class="section" id="example-question-a-to-b">
+<h2>Example Question: A to B<a class="headerlink" href="#example-question-a-to-b" title="Permalink to this headline">¶</a></h2>
+<p>You are sailing from position A: <span class="math notranslate nohighlight">\(15° 37' S :: 174° 14' E\)</span> to position B: <span class="math notranslate nohighlight">\(17° 18' S :: 176° 25' E\)</span>. Calculate the course and distance covered between these two points.</p>
+<div class="section" id="d-lon-and-d-lat">
+<h3>D’Lon and D’Lat<a class="headerlink" href="#d-lon-and-d-lat" title="Permalink to this headline">¶</a></h3>
+<p>Get the D’Lon and D’Lat between the two points:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}D'Lat &amp;= Dest'Lat - Origin'Lat \\
+D'Lat &amp;= (-) 17° 18' - (-) 15° 37' \\
+D'Lon &amp;= Dest'Lon - Origin'Lon \\
+D'Lon &amp;= (+) 176° 25' - (+) 174° 14' \\
+\\
+D'Lat &amp;= (-) 1° 41' = S 1° 41' \\
+D'Lat_{min} &amp;= 101.00'
+D'Lon &amp;= (+) 2° 11' = E 2° 11' \\
+D'Lon_{min} &amp;= 131.00'\end{split}\]</div>
+</div>
+<div class="section" id="mean-latitude">
+<h3>Mean Latitude<a class="headerlink" href="#mean-latitude" title="Permalink to this headline">¶</a></h3>
+<p>Get the M’Lat by averaging the latitudes:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}M'Lat &amp;= (Dest'Lat + Origin'Lat) \div 2 \\
+M'Lat &amp;= ((-) 17° 18' + (-) 15° 37') \div 2 \\
+\\
+M'Lat &amp;= (-) 16° 27.5' = S 16° 27.5'\end{split}\]</div>
+</div>
+<div class="section" id="departure">
+<h3>Departure<a class="headerlink" href="#departure" title="Permalink to this headline">¶</a></h3>
+<p>Get the Departure in nautical miles:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Departure_{nm} &amp;= D'Lon_{min} * \cos M'Lat \\
+Departure_{nm} &amp;= 131.00 * \cos((-) 16°27.5') \\
+\\
+Departure_{nm} &amp;= 125.632409\end{split}\]</div>
+</div>
+<div class="section" id="course-angle">
+<h3>Course Angle<a class="headerlink" href="#course-angle" title="Permalink to this headline">¶</a></h3>
+<p>Now that we have two sides of our navigation triangle, we can work out the course angle using tangent right triangle rule:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Course \angle &amp;= tan^{-1}(Departure_{nm} \div D'Lat_{min}) \\
+Course \angle &amp;= tan^{-1}(125.632409 \div 101.00) \\
+\\
+Course \angle &amp;= 51.20306099°\end{split}\]</div>
+<p>The directions of the course angle are taken from the D’Lat, and then the D’Lon, in that order, because we always construct the triangle by going south or north first.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Course \angle &amp;= S 51.20306099° E \\
+Course &amp;= 180° - 51.20306099° \\
+\\
+Course &amp;= 129° (T)\end{split}\]</div>
+<p>It’s pretty hard to steer to decimals of a degree so we’ll round the true course off.</p>
+</div>
+<div class="section" id="distance">
+<h3>Distance<a class="headerlink" href="#distance" title="Permalink to this headline">¶</a></h3>
+<p>Using the course angle we can now find the distance travelled (the hypotenuse of our navigation triangle) using the cosine right triangle rule.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Distance_{nm} &amp;= D'Lat_{min} \div \cos (Course \angle) \\
+Distance_{nm} &amp;= 101.00 \div 51.20306099 \\
+\\
+Distance_{nm} &amp;= 161.1970911\end{split}\]</div>
+</div>
+<div class="section" id="answer">
+<h3>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h3>
+<p>Once you’re finished with a question you probably don’t need all the decimal points, so lets round the distance down to two places:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Distance &amp;= 161.20 \text{ nautical miles} \\
+Course &amp;= 129°(T)\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="question-generator-a-to-b">
+<h2>Question Generator: A to B<a class="headerlink" href="#question-generator-a-to-b" title="Permalink to this headline">¶</a></h2>
 <div class="PlaneSailingAB">
 </div><p>Next up we have <a class="reference internal" href="mercator_sailing.html"><span class="doc">Mercator Sailing</span></a>.</p>
 </div>
@@ -89,7 +160,7 @@
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../index.html">Navigation</a><ul>
   <li><a href="index.html">Mathematical Navigation</a><ul>
-      <li>Previous: <a href="parallel_sailing.html" title="previous chapter">Parallel Sailing</a></li>
+      <li>Previous: <a href="course_angles.html" title="previous chapter">Course Angles</a></li>
       <li>Next: <a href="mercator_sailing.html" title="next chapter">Mercator Sailing</a></li>
   </ul></li>
   </ul></li>
