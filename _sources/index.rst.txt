@@ -20,6 +20,7 @@ Thanks for taking a look!
    navigation/index
    watchkeeping/index
    science/index
+   ship_operations/index
 
 
 
