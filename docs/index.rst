@@ -21,6 +21,7 @@ Thanks for taking a look!
    watchkeeping/index
    science/index
    ship_operations/index
+   seaworthiness/index
 
 
 
