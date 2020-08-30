@@ -1,8 +1,0 @@
-Core Concepts
-======================
-
-Rather than going into detail for singular concepts, we're going to go over the breadth of stability as a subject first. The idea here is to give you a clear idea of the full picture, and create basic relationships before we go in to greater detail.
-
-Weight & Gravity
-------------------
-Objects weigh.
