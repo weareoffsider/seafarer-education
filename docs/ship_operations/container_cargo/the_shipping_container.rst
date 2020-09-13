@@ -19,3 +19,25 @@ Within the standardised dimensions there are a number of different types of ship
 - Bolster Shipping Container
 - Double Door Shipping Container
 - Pallet Wide Shipping Container
+
+Container Safety Convention
+-----------------------------
+
+Shipping containers must be certified as safe for usage. Consider the ramifications of weak container in a stack, its collapse could lead to the loss and destruction of many more containers than just the one that failed.
+
+
+Safety Approval Plate
+^^^^^^^^^^^^^^^^^^^^^^^
+An approved container will have a Safety Approval Plate affixed to it, which delineates key information including:
+
+**Maximum Operating Gross Mass**: the maximum weight of the container and its contents.
+
+**Allowable Stacking Weight at 1.8G**: the maximum allowed weight to be stacked on top of the container.
+
+**Racking Test Load Value**: the amount of transverse and longitudinal weight that the container has been tested for being able to resist racking.
+
+Tare, Weight, and Goods Markings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In addition to the Safety Approval Plate, the container will be marked with it's Tare (weight of container), Max Payload (weight of cargo), and Max Gross (combined weight).
+
+Dangerous Goods placards will also be placed if relevant to the container.
