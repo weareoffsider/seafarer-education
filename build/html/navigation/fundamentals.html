@@ -1,20 +1,20 @@
-
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Fundamentals in Navigation &#8212; Seafarer 0.0.1 documentation</title>
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=12dfc556" />
     <link rel="stylesheet" type="text/css" href="/assets/SeafarerMain.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="/assets/SeafarerClient.pkg.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/assets/SeafarerClient.pkg.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Mechanical Navigation" href="mechanical_nav/index.html" />
@@ -22,8 +22,9 @@
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -35,58 +36,59 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="fundamentals-in-navigation">
-<h1>Fundamentals in Navigation<a class="headerlink" href="#fundamentals-in-navigation" title="Permalink to this headline">¶</a></h1>
+  <section id="fundamentals-in-navigation">
+<h1>Fundamentals in Navigation<a class="headerlink" href="#fundamentals-in-navigation" title="Link to this heading">¶</a></h1>
 <p>Navigation is fundamentally about finding your position on the Earth, and then deciding where to go next, so it stands to reason that how we define our position is pretty important.</p>
-<div class="section" id="earth-an-oblate-spheroid">
-<h2>Earth: an oblate spheroid<a class="headerlink" href="#earth-an-oblate-spheroid" title="Permalink to this headline">¶</a></h2>
+<section id="earth-an-oblate-spheroid">
+<h2>Earth: an oblate spheroid<a class="headerlink" href="#earth-an-oblate-spheroid" title="Link to this heading">¶</a></h2>
 <p>Earth is close to a sphere, but <a class="reference external" href="https://www.scientificamerican.com/article/earth-is-not-round/">it is not perfectly round</a>, which makes it an oblate spheroid. It is slightly wider than it is tall (about 21 kilometres) and while this doesn’t factor in to our navigation processes often, it’s important to know that this is the case.</p>
-</div>
-<div class="section" id="coordinates-on-the-earth">
-<h2>Coordinates on the Earth<a class="headerlink" href="#coordinates-on-the-earth" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="coordinates-on-the-earth">
+<h2>Coordinates on the Earth<a class="headerlink" href="#coordinates-on-the-earth" title="Link to this heading">¶</a></h2>
 <p>When we consider our position on the Earth, we use lines of latitude (parallels) and longitude (meridians). Lines of latitude travel east and west while lines of longitude travel north and south, meeting at the poles.</p>
 <p><a href="https://commons.wikimedia.org/wiki/File:Division_of_the_Earth_into_Gauss-Krueger_zones_-_Globe.svg#/media/File:Division_of_the_Earth_into_Gauss-Krueger_zones_-_Globe.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Division_of_the_Earth_into_Gauss-Krueger_zones_-_Globe.svg/1200px-Division_of_the_Earth_into_Gauss-Krueger_zones_-_Globe.svg.png" alt="Division of the Earth into Gauss-Krueger zones - Globe.svg"></a><br>By <a href="//commons.wikimedia.org/wiki/User:Hellerick" title="User:Hellerick">Hellerick</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=26737079">Link</a></p><p>Because lines of longitude meets at the poles, they get closer and closer the further north or south you travel. Lines of Latitude, on the other hand, are evenly spaced all the way up to the poles.</p>
-<div class="section" id="degrees-minutes-and-sign">
-<h3>Degrees, Minutes, and Sign<a class="headerlink" href="#degrees-minutes-and-sign" title="Permalink to this headline">¶</a></h3>
+<section id="degrees-minutes-and-sign">
+<h3>Degrees, Minutes, and Sign<a class="headerlink" href="#degrees-minutes-and-sign" title="Link to this heading">¶</a></h3>
 <p>We measure latitude and longitude in degrees. A full circle has 360 degrees, and in each degree is 60 minutes. In each minute there are 60 seconds as well, however they are not used in Latitude and Longitude measurements, they will always be expressed as degrees and minutes, for example: <span class="math notranslate nohighlight">\(45° 15.34'\)</span>.</p>
 <p>Latitude is measured in relation to the equator, so parallels north of the equator would be <span class="math notranslate nohighlight">\(20° 12.00' N\)</span> while parallels south would be <span class="math notranslate nohighlight">\(20° 12.00' S\)</span>.</p>
 <p>Longitude is measured in relation to the <strong>prime meridian</strong> which is accepted to be close to Greenwich, but there’s a <a class="reference external" href="https://en.wikipedia.org/wiki/IERS_Reference_Meridian">whole history there</a> which we’re not going to get in to. Meridians east of the prime meridian would be <span class="math notranslate nohighlight">\(75° 30.00' E\)</span>, while meridians to the west would be <span class="math notranslate nohighlight">\(75° 30.00' W\)</span>. Unlike Latitude, Longitude meets at the anti meridian, which is 180° east or west of the prime meridian.</p>
 <p>With all this, there are 90° north and south of latitude, and 180° east and west of longitude.</p>
-</div>
-<div class="section" id="position">
-<h3>Position<a class="headerlink" href="#position" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="position">
+<h3>Position<a class="headerlink" href="#position" title="Link to this heading">¶</a></h3>
 <p>Any position on Earth can be described using latitude and longitude:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}Latitude &amp;= 30° 13.45' S \\
 Longitude &amp;= 67° 11.45' E\end{split}\]</div>
-</div>
-<div class="section" id="distances">
-<h3>Distances<a class="headerlink" href="#distances" title="Permalink to this headline">¶</a></h3>
-<p>At sea the main measure of distance we use is the nautical mile. It is defined as exactly 1,852 metres, although it has a very close relationship with lines of latitude. One minute of latitude used to be considered a nautical mile, but because that changes: Earth is an oblate spheroid so 1 minute = 1,861 metres at the poles and 1,843 metres at the equator <a class="footnote-reference brackets" href="#f1" id="id1">1</a>, it was standardised down to the average.</p>
+</section>
+<section id="distances">
+<h3>Distances<a class="headerlink" href="#distances" title="Link to this heading">¶</a></h3>
+<p>At sea the main measure of distance we use is the nautical mile. It is defined as exactly 1,852 metres, although it has a very close relationship with lines of latitude. One minute of latitude used to be considered a nautical mile, but because that changes: Earth is an oblate spheroid so 1 minute = 1,861 metres at the poles and 1,843 metres at the equator <a class="footnote-reference brackets" href="#f1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, it was standardised down to the average.</p>
 <p>Generally that detail is ignored, so typically in calculations and on charts you will use Latitude as a scale of distance, with one minute equalling 1,852 metres.</p>
-<dl class="footnote brackets">
-<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>McNish, Larry. “RASC Calgary Centre - Latitude and Longitude”. The Royal Astronomical Society of Canada. - <a class="reference external" href="https://calgary.rasc.ca/latlong.htm">https://calgary.rasc.ca/latlong.htm</a></p>
-</dd>
-</dl>
-</div>
-<div class="section" id="directions">
-<h3>Directions<a class="headerlink" href="#directions" title="Permalink to this headline">¶</a></h3>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>McNish, Larry. “RASC Calgary Centre - Latitude and Longitude”. The Royal Astronomical Society of Canada. - <a class="reference external" href="https://calgary.rasc.ca/latlong.htm">https://calgary.rasc.ca/latlong.htm</a></p>
+</aside>
+</aside>
+</section>
+<section id="directions">
+<h3>Directions<a class="headerlink" href="#directions" title="Link to this heading">¶</a></h3>
 <p>Directions are measured by degrees as well, with 000° pointing North, 090° pointing East, 180° pointing South and 270° pointing West.</p>
 <p>The direction is also referenced to true North <span class="math notranslate nohighlight">\(156° T\)</span>, Magnetic North <span class="math notranslate nohighlight">\(156° M\)</span>, or Compass North <span class="math notranslate nohighlight">\(156° C\)</span>, and it is important to always be specific about which reference point a direction is using.</p>
 <p><strong>True</strong> directions are how we ideally navigate on charts and on calculations.</p>
 <p><strong>Magnetic</strong> directions are required for using a Magnetic Compass, and are determined by the magnetic field at a particular location in the world (referred to as Variation).</p>
 <p><strong>Compass</strong> directions are specific to your particular Magnetic Compass, and are determined by the magnetic interference of your own ship at particular heading (referred to as Deviation).</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
           </div>
           
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h1 class="logo"><a href="../index.html">Seafarer</a></h1>
 
@@ -123,16 +125,16 @@ Longitude &amp;= 67° 11.45' E\end{split}\]</div>
   </ul></li>
 </ul>
 </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -146,11 +148,11 @@ Longitude &amp;= 67° 11.45' E\end{split}\]</div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2020, Weekends.
+      &#169;2020, Weekends.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
       
       |
       <a href="../_sources/navigation/fundamentals.rst.txt"

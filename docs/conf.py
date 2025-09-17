@@ -62,5 +62,6 @@ html_css_files = [
     '/assets/SeafarerMain.css',
 ]
 html_js_files = [
+    '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
     '/assets/SeafarerClient.pkg.js',
 ]

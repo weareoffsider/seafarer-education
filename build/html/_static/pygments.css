@@ -1,3 +1,30 @@
+pre {
+  line-height: 125%;
+}
+td.linenos .normal {
+  color: inherit;
+  background-color: transparent;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+span.linenos {
+  color: inherit;
+  background-color: transparent;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+td.linenos .special {
+  color: #000000;
+  background-color: #ffffc0;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+span.linenos.special {
+  color: #000000;
+  background-color: #ffffc0;
+  padding-left: 5px;
+  padding-right: 5px;
+}
 .highlight .hll {
   background-color: #ffffcc;
 }
@@ -65,6 +92,9 @@
   color: #000000;
   font-style: italic;
 } /* Generic.Emph */
+.highlight .ges {
+  color: #000000;
+} /* Generic.EmphStrong */
 .highlight .gr {
   color: #ef2929;
 } /* Generic.Error */
@@ -174,9 +204,12 @@
   color: #004461;
   font-weight: bold;
 } /* Operator.Word */
+.highlight .pm {
+  color: #000000;
+  font-weight: bold;
+} /* Punctuation.Marker */
 .highlight .w {
   color: #f8f8f8;
-  text-decoration: underline;
 } /* Text.Whitespace */
 .highlight .mb {
   color: #990000;

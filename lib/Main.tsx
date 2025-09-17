@@ -28,4 +28,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
   Array.from(amplitude).forEach(Amplitude)
   const azimuth = document.querySelectorAll(".Azimuth")
   Array.from(azimuth).forEach(Azimuth)
+
+  require("./inline-discussions/inline-discussions.js")
+
+  window.disqus_shortname = "seafarer-education"
+
+  jQuery(document).ready(function () {
+    jQuery(".body p").inlineDisqussions({
+      identifier: "disqussion",
+      displayCount: true,
+      highlighted: true,
+      position: "right",
+      background: "white",
+      maxWidth: 9999,
+    })
+  })
 })
