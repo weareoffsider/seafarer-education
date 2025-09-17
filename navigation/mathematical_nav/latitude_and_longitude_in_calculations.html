@@ -1,20 +1,20 @@
-
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Latitude and Longitude in Calculations &#8212; Seafarer 0.0.1 documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
     <link rel="stylesheet" type="text/css" href="/assets/SeafarerMain.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="/assets/SeafarerClient.pkg.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/assets/SeafarerClient.pkg.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Parallel Sailing" href="parallel_sailing.html" />
@@ -22,8 +22,9 @@
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -35,28 +36,28 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="latitude-and-longitude-in-calculations">
-<h1>Latitude and Longitude in Calculations<a class="headerlink" href="#latitude-and-longitude-in-calculations" title="Permalink to this headline">¶</a></h1>
+  <section id="latitude-and-longitude-in-calculations">
+<h1>Latitude and Longitude in Calculations<a class="headerlink" href="#latitude-and-longitude-in-calculations" title="Link to this heading">¶</a></h1>
 <p>Working with Latitude and Longitude positions is a constant part of mathematical navigation. You need to work out the difference between two positions, and the direction of travel (N/E/W/S). You can greatly simplify this process if you adopt the following convention when using a calculator:</p>
-<div class="section" id="latitude-math">
-<h2>Latitude Math<a class="headerlink" href="#latitude-math" title="Permalink to this headline">¶</a></h2>
+<section id="latitude-math">
+<h2>Latitude Math<a class="headerlink" href="#latitude-math" title="Link to this heading">¶</a></h2>
 <p>Any Northern Latitude is positive, and any Southern Latitude is negative, ie:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}30° S &amp;= -30° \\
 30° N &amp;= 30° \\
 50° 23.5' S &amp;= -50° 23.5' \\
 35° 42.7' N &amp;= 35° 42.7'\end{split}\]</div>
-<div class="section" id="difference-in-latitude">
-<h3>Difference in Latitude<a class="headerlink" href="#difference-in-latitude" title="Permalink to this headline">¶</a></h3>
+<section id="difference-in-latitude">
+<h3>Difference in Latitude<a class="headerlink" href="#difference-in-latitude" title="Link to this heading">¶</a></h3>
 <p>This convention becomes very useful when we want to figure out the difference in Latitude. Subtracting numbers can actually be used to compare them, and in the case of Latitudes we can use that fact to compare two latitudes as long as we remember to subtract the origin from the destination. For example:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}D'Lat = 30°N \longleftarrow 60°S = 30° - -60° = 90° = 90° N \\
 D'Lat = 30°S \longleftarrow 60°S = -30° - -60° = 30° = 30° N \\
 D'Lat = 60°S \longleftarrow 30°S = -60° - -30° = -30° = 30° S\end{split}\]</div>
 <p>Obviously in simple cases like this it’s easy enough to do the difference in your head, but remembering this rule will mean you can get it right every time with your calculator to any number of degrees, minutes and decimal places. The sign of Difference in Latitude matters, as it indicates which direction of travel is occuring, which is used for finding the final course.</p>
-</div>
-<div class="section" id="difference-in-latitude-in-minutes">
-<h3>Difference in Latitude in Minutes<a class="headerlink" href="#difference-in-latitude-in-minutes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="difference-in-latitude-in-minutes">
+<h3>Difference in Latitude in Minutes<a class="headerlink" href="#difference-in-latitude-in-minutes" title="Link to this heading">¶</a></h3>
 <p>D’Lat is the common name for difference in Latitude. Often we need to use the D’Lat in minutes rather than degrees, which you can get on your calculator just by multiplying by 60.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}D'Lat &amp;= 10° N \\
@@ -67,18 +68,18 @@ D'Lat_{min} &amp;= 600'\end{split}\]</div>
 \[\begin{split}D'Lat &amp;= 20° S \\
 D'Lat_{min} &amp;= -20° * 60 \\
 D'Lat_{min} &amp;= 1200'\end{split}\]</div>
-</div>
-</div>
-<div class="section" id="longitude-math">
-<h2>Longitude Math<a class="headerlink" href="#longitude-math" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="longitude-math">
+<h2>Longitude Math<a class="headerlink" href="#longitude-math" title="Link to this heading">¶</a></h2>
 <p>Any Eastern Longitude is positive, and any Western Longitude is negative, ie:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}30° W &amp;= -30° \\
 30° E &amp;= 30° \\
 50° 23.5' W &amp;= -50° 23.5' \\
 35° 42.7' E &amp;= 35° 42.7'\end{split}\]</div>
-<div class="section" id="difference-in-longitude">
-<h3>Difference in Longitude<a class="headerlink" href="#difference-in-longitude" title="Permalink to this headline">¶</a></h3>
+<section id="difference-in-longitude">
+<h3>Difference in Longitude<a class="headerlink" href="#difference-in-longitude" title="Link to this heading">¶</a></h3>
 <p>Working out difference in Longitude works the same way, subtracting the origin from the destination.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}D'Lon = 30°E \longleftarrow 60°W = 30° - -60° = 90° = 90° E \\
@@ -91,19 +92,19 @@ D'Lon = 60°W \longleftarrow 30°W = -60° - -30° = -30° = 30° W\end{split}\]
 <div class="math notranslate nohighlight">
 \[\begin{split}D'Lon = 330° - 360° = -30° = 30°W \\
 D'Lon = -190° + 360° = 170° = 170°E\end{split}\]</div>
-</div>
-<div class="section" id="difference-in-longitude-in-minutes">
-<h3>Difference in Longitude in Minutes<a class="headerlink" href="#difference-in-longitude-in-minutes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="difference-in-longitude-in-minutes">
+<h3>Difference in Longitude in Minutes<a class="headerlink" href="#difference-in-longitude-in-minutes" title="Link to this heading">¶</a></h3>
 <p>Converting Difference in Longitude to minutes works the same way as Latitude, just multiply by 60 to get the value in minutes.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}D'Lon &amp;= 10° E \\
 D'Lon_{min} &amp;= 10° * 60 \\
 D'Lon_{min} &amp;= 600'\end{split}\]</div>
 <p>It’s important to note that Longitude in Minutes DOES NOT correlate with nautical miles, as meridians get closer together the closer they are to the poles, see <a class="reference internal" href="../fundamentals.html"><span class="doc">Fundamentals in Navigation</span></a> for more on this.</p>
-</div>
-</div>
-<div class="section" id="departure">
-<h2>Departure<a class="headerlink" href="#departure" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="departure">
+<h2>Departure<a class="headerlink" href="#departure" title="Link to this heading">¶</a></h2>
 <p><strong>Departure</strong> is the conversion of a Difference in Longitude (in minutes) to nautical miles. In order to do this we need to know the Latitude at which we are calculating the departure, because the meridians get closer together as you get closer to the poles.</p>
 <p>At 0° of latitude a minute of longitude is equivalent to a nautical mile.
 At 90° of latitude a minute of longitude is no distance at all, because that’s at the north or south pole.</p>
@@ -124,15 +125,15 @@ Departure_{nm} &amp;= D'Lon_{min} * \cos Lat \\
 Departure_{nm} &amp;= 600' * \cos 20° \\
 Departure_{nm} &amp;= 563.8155725 \text{ nautical miles}\end{split}\]</div>
 <p>With Departure in hand, we can move on to our first sailing, <a class="reference internal" href="parallel_sailing.html"><span class="doc">Parallel Sailing</span></a>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
           
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h1 class="logo"><a href="../../index.html">Seafarer</a></h1>
 
@@ -171,16 +172,16 @@ Departure_{nm} &amp;= 563.8155725 \text{ nautical miles}\end{split}\]</div>
   </ul></li>
 </ul>
 </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -194,11 +195,11 @@ Departure_{nm} &amp;= 563.8155725 \text{ nautical miles}\end{split}\]</div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2020, Weekends.
+      &#169;2020, Weekends.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
       
       |
       <a href="../../_sources/navigation/mathematical_nav/latitude_and_longitude_in_calculations.rst.txt"
